@@ -112,7 +112,7 @@ O **Quizeiro** é uma plataforma revolucionária que leva a criação de quizzes
   - Github
 - IDEs
   - Banco de dados: **DataGrip**
-  - Código: **PHPStorm**
+  - Código: **VSCode**
 - Teste de APIs
   - Postman
 
