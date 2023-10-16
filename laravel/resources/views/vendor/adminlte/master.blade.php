@@ -104,7 +104,14 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
+    <script>
+        $(document).ready(function() {
+            $('#logout').click(function(e) {
+                e.preventDefault();
+                $('#logout-form').submit();
+            });
+        } );
+    </script>
 </body>
 
 </html>
