@@ -304,7 +304,7 @@ return [
             'active' => ['account/edit*']
         ],
         [
-            'text' => 'Alterar senha',
+            'text' => 'Redefinir senha',
             'url'  => 'account/password',
             'icon' => 'fas fa-fw fa-lock',
             'active' => ['account/password*']

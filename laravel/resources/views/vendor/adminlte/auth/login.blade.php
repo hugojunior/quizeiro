@@ -18,6 +18,8 @@
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
 
+@include('layouts.flash-messages')
+
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
 @section('auth_body')
@@ -25,7 +27,7 @@
         @csrf
 
         {{-- Email field --}}
-        <div class="input-group mb-3">
+        <div class="mb-3 input-group">
             <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                    value="{{ old('email') }}" placeholder="{{ __('adminlte::adminlte.email') }}" autofocus>
 
@@ -43,7 +45,7 @@
         </div>
 
         {{-- Password field --}}
-        <div class="input-group mb-3">
+        <div class="mb-3 input-group">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
 
@@ -97,7 +99,7 @@
     @if($register_url)
         <p class="my-0">
             <a href="{{ $register_url }}">
-                {{ __('adminlte::adminlte.register_a_new_membership') }}
+                Quero me cadastrar
             </a>
         </p>
     @endif
