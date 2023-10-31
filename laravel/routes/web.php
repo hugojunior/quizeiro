@@ -29,13 +29,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
     Route::get('/quizzes/create', [QuizController::class, 'create'])->name('quizzes.create');
     Route::post('/quizzes/create', [QuizController::class, 'store'])->name('quizzes.store');
-    Route::get('/quizzes/{quizID}', [QuizController::class, 'show'])->name('quizzes.show');
+    Route::get('/quizzes/import', [QuizController::class, 'import'])->name('quizzes.import');
+    Route::post('/quizzes/import', [QuizController::class, 'importProccess'])->name('quizzes.import.proccess');
     Route::get('/quizzes/{quizID}/reports', [QuizController::class, 'report'])->name('quizzes.report');
     Route::get('/quizzes/{quizID}/edit', [QuizController::class, 'edit'])->name('quizzes.edit');
     Route::patch('/quizzes/{quizID}', [QuizController::class, 'update'])->name('quizzes.update');
     Route::get('/quizzes/{quizID}/delete', [QuizController::class, 'delete'])->name('quizzes.delete');
     Route::delete('/quizzes/{quizID}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
-
-    // QUIZ - SHARE
-    Route::get('/{user}/{quizID}', [QuizController::class, 'share'])->name('quizzes.share');
 });
+
+// QUIZ - SHARE
+Route::get('/{username}/{quizSlug}', [QuizController::class, 'share'])->name('quizzes.share');
