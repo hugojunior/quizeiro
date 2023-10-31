@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index,follow" />
-    <meta name="description" content="Esse Quiz gamificado é projetado para testar seus conhecimentos em tópicos importantes do mundo de desenvolvimento de software e tecnologia." />
+    <meta name="description" content="{{ $quiz->description }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@hugojuniior" />
     <meta name="twitter:creator" content="@hugojuniior" />
-    <meta property="og:title" content="QuizDev - Jogando e aprendendo!" />
-    <meta property="og:description" content="Esse Quiz gamificado é projetado para testar seus conhecimentos em tópicos importantes do mundo de desenvolvimento de software e tecnologia." />
-    <meta property="og:url" content="https://quizdev.hugojunior.com/" />
+    <meta property="og:title" content="{{ $quiz->title }}" />
+    <meta property="og:description" content="{{ $quiz->description }}" />
+    <meta property="og:url" content="https://quizeiro.games/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://quizdev.hugojunior.com/images/game-preview.png">
-    <meta name="keywords" content="quiz,dev,quizdev,quiz online,programação,frontend,html,css,javascript,css,http,dns,aprender,estudar,projeto,uni7,faculdade" />
+    <meta name="keywords" content="quiz,quizeiro,quizdev,quiz online,gratis,personalizado,aprender,estudar,jogar,projeto,uni7,faculdade" />
     <meta name="author" content="Hugo Júnior" />
-    <title>QuizDev - Jogando e aprendendo!</title>
+    <title>Quizeiro - {{ $quiz->title }}</title>
     <script src="/js/phaser-arcade-physics.js"></script>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <script type="text/javascript">
         var User = new Phaser.Class({
             Extends: Phaser.Scene
@@ -33,8 +36,7 @@
             , preload() {
                 this.load.html('userForm', '/html/scenes/user/form.html');
                 this.load.audio('music', ['/sounds/game-music.mp3']);
-                this.load.image('logo200x132', '/images/logo-200x132-white.png');
-                this.load.image('personLaptop77x100', '/images/person-laptop-77x100.png');
+                this.load.image('logo346x85', '/images/logo-quizeiro-white-shadow-346x85.png');
                 this.load.image('personBike60x79', '/images/person-bike-60x79.png');
                 this.load.image('backgroundUser', '/images/bg-scene-user.png');
             }
@@ -45,8 +47,7 @@
                     , volume: 0.2
                 }).play();
                 this.add.image(400, 214, 'backgroundUser');
-                this.add.image(250, 210, 'personLaptop77x100');
-                this.add.image(400, 150, 'logo200x132');
+                this.add.image(385, 210, 'logo346x85');
                 var personMotion = this.add.image(0, 390, 'personBike60x79');
                 const tween = this.add.tween({
                     targets: personMotion
@@ -56,7 +57,13 @@
                     , ease: 'Linear'
                     , repeat: -1
                 });
-                this.add.dom(380, 280).setInteractive().createFromCache('userForm');
+                this.add.dom(408, 280).setInteractive().createFromCache('userForm');
+
+                document.querySelector('#fUser').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    document.querySelector('.btnUser').click();
+                });
+
                 document.querySelector('.btnUser').addEventListener('click', () => {
                     var nameUser = document.querySelector('.nameUser');
                     if (nameUser.value !== '') {
@@ -79,19 +86,19 @@
             }
             , preload() {
                 this.load.image('backgroundInfo', '/images/bg-scene-info.png');
-                this.load.image('logo100x66', '/images/logo-100x66-white.png');
+                this.load.image('logo55x66', '/images/logo-quizeiro-white-55x66.png');
                 this.load.html('infoBriefing', '/html/scenes/info/briefing.html');
             }
             , create() {
                 this.add.image(400, 214, 'backgroundInfo');
-                this.add.image(400, 50, 'logo100x66');
+                this.add.image(400, 50, 'logo55x66');
                 this.add.text(27, 40, 'Bem-vindo(a),', {
                     fontFamily: "'Courier New', Courier, monospace"
                     , fontSize: 20
                     , color: '#ffffff'
                     , fontWeight: 'bold'
                 });
-                this.add.text(27, 60, this.name + '!', {
+                this.add.text(27, 66, this.name + '!', {
                     fontFamily: "'Courier New', Courier, monospace"
                     , fontSize: 30
                     , color: '#fab40a'
@@ -113,20 +120,20 @@
             }
             , init(data) {
                 this.name = data.name;
-                this.initialCountdownTime = 180; //segundos
-                this.totalQuestions = 20; // total de questões (max: 50)
+                this.initialCountdownTime = 120; //segundos
+                this.totalQuestions = 10;
                 this.lifes = 3;
                 this.questionsCorrects = 0;
-                this.questionsJson = [];
                 this.currentQuestionIndex = null;
                 this.gameEnd = false;
                 this.helpBox = false;
                 this.infoBox = false;
                 this.finished = false;
+                this.questionsJson = [];
+                this.questionsJson = {!! $questions !!};
             }
             , preload() {
                 this.input.keyboard.enabled = true;
-                this.load.json('questionsJson', '/js/questions.json');
                 this.load.audio("sGameOver", ["/sounds/game-over.mp3"]);
                 this.load.audio("sGameSuccess", ["/sounds/game-success.mp3"]);
                 this.load.audio("sQuestionCorrect", ["/sounds/question-correct.mp3"]);
@@ -226,7 +233,6 @@
                     this.scene.restart();
                     this.scene.start('user');
                 }, this);
-                this.questionsJson = this.cache.json.get('questionsJson').sort(() => Math.random() - 0.5).slice(0, this.totalQuestions);
                 this.currentQuestionIndex = 0;
                 this.showQuestion();
                 this.eventKeys();
@@ -585,12 +591,22 @@
 <body>
     <div id="game"></div>
     <div id="container">
-        <h1><a href="https://github.com/hugojunior/quizdev" target="_blank">&gt; Projeto no GitHub<span class="blink">_</span></a></h1>
+        <h1>{{ $quiz->title }}</h1>
+        <div class="text-desc">{!! nl2br($quiz->description) !!}</div>
+        <h3>Compartilhe:</h3>
+        <div class="share">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(Request::fullUrl()) }}" target="_blank"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text={{ urlencode($quiz->title) }}" target="_blank"><ion-icon name="logo-twitter"></ion-icon></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title={{ urlencode($quiz->title) }}&summary={{ urlencode($quiz->description) }}&source={{ urlencode(Request::fullUrl()) }}" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+            <a href="https://api.whatsapp.com/send?text={{ urlencode($quiz->title) }} {{ urlencode(Request::fullUrl()) }}" target="_blank"><ion-icon name="logo-whatsapp"></ion-icon></a>
         <hr>
         <div class="creditos">
-            Criado por <a href="http://www.hugojunior.com" target="_blank">Hugo Júnior</a> como projeto de Estágio I do curso de SI da <a href="https://www.uni7.edu.br/" target="_blank">UNI7</a>.
+            Criado por <a href="http://www.hugojunior.com" target="_blank">Hugo Júnior</a> como projeto de Estágio II do curso de SI da <a href="https://www.uni7.edu.br/" target="_blank">UNI7</a>.<br>
+            <a href="https://github.com/hugojunior/quizeiro" target="_blank" class="link-github"><ion-icon name="logo-github"></ion-icon></a>
         </div>
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

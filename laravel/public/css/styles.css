@@ -90,7 +90,11 @@ canvas {
 }
 
 #container h1 {
-  text-align: center;
+    font-size: 26px;
+}
+
+#container p {
+    padding: 10px 0 20px 0;
 }
 
 #container h1 a {
@@ -109,19 +113,19 @@ canvas {
 #formUser {
   display: block;
   text-align: center;
-  width: 250px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .nameUser {
-  display: block;
+  display: inline-block;
   color: #292737;
   border-radius: 0px;
   padding: 10px 20px;
   text-align: center;
   border: 2px solid #8682a0;
   background-color: #edeeea;
-  width: 246px;
+  width: 200px;
   box-shadow: 3px 6px rgba(134, 130, 160, 0.3);
 }
 .nameUser:focus {
@@ -130,16 +134,15 @@ canvas {
 }
 
 .btnUser {
-  display: block;
+  display: inline-block;
   border-radius: 0px;
-  padding: 10px 20px;
+  padding: 10px;
   text-align: center;
   margin-top: 10px;
   color: #292737;
   background-color: #fab40a;
   font-weight: bold;
   border: 2px solid #a77700;
-  width: 290px;
   box-shadow: 3px 6px rgba(134, 130, 160, 0.3);
 }
 
@@ -510,4 +513,24 @@ canvas {
 #boxScore li small {
   color: #fab40a;
   font-size: 12px;
+}
+
+.text-desc {
+    display: block;
+    background:#25212c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.link-github {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.share {
+    font-size: 30px;
+    text-decoration: none;
 }

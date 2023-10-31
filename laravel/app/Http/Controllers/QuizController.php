@@ -164,9 +164,20 @@ class QuizController extends Controller
             ->where('date_end', '>=', date('Y-m-d H:i:s'))
             ->firstOrFail();
 
+        $questions = collect($quiz->questions)->shuffle()->map(function ($item) {
+            return [
+                'pergunta' => $item['question'],
+                'correta' => $item['answers'][0],
+                'tema' => 'Geral',
+                'opcoes' => collect($item['answers'])->shuffle()->map(function ($item) {
+                    return $item;
+                })->toArray()
+            ];
+        })->toJson();
+
         $this->saveVisit($quiz->id);
 
-        return view('quiz.share', compact('quiz'));
+        return view('quiz.share', compact('quiz', 'questions'));
     }
 
     private function saveVisit($quizID)
