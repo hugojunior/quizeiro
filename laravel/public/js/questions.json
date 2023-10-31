@@ -1,0 +1,372 @@
+[
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é a linguagem de marcação usada para estruturar o conteúdo na web?",
+    "opcoes": ["HTML", "CSS", "JavaScript", "PHP", "Python"],
+    "correta": "HTML"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento utilizado para criar um link em HTML?",
+    "opcoes": ["<a>", "<link>", "<href>", "<url>", "<src>"],
+    "correta": "<a>"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento utilizado para criar uma lista ordenada em HTML?",
+    "opcoes": ["<ol>", "<ul>", "<li>", "<dl>", "<dt>"],
+    "correta": "<ol>"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o atributo usado para especificar o estilo CSS de um elemento em HTML?",
+    "opcoes": ["class", "id", "style", "css", "font"],
+    "correta": "style"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento utilizado para definir um cabeçalho de nível 1 em HTML?",
+    "opcoes": ["<h1>", "<header>", "<head>", "<hn>", "<title>"],
+    "correta": "<h1>"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento usado para exibir uma imagem em HTML?",
+    "opcoes": ["<img>", "<image>", "<src>", "<picture>", "<figure>"],
+    "correta": "<img>"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o atributo usado para especificar o texto alternativo de uma imagem em HTML?",
+    "opcoes": ["alt", "title", "src", "href", "text"],
+    "correta": "alt"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento utilizado para criar uma tabela em HTML?",
+    "opcoes": ["<table>", "<tr>", "<td>", "<th>", "<caption>"],
+    "correta": "<table>"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o atributo usado para definir o título de uma página em HTML?",
+    "opcoes": ["title", "head", "meta", "body", "caption"],
+    "correta": "title"
+  },
+  {
+    "tema": "HTML",
+    "pergunta": "Qual é o elemento utilizado para criar um formulário em HTML?",
+    "opcoes": ["<form>", "<input>", "<label>", "<button>", "<select>"],
+    "correta": "<form>"
+  },
+
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a linguagem usada para estilizar o conteúdo na web?",
+    "opcoes": ["HTML", "CSS", "JavaScript", "PHP", "Python"],
+    "correta": "CSS"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para definir a cor de fundo de um elemento em CSS?",
+    "opcoes": ["background-color", "color", "font-size", "border", "margin"],
+    "correta": "background-color"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a unidade de medida mais comumente usada para definir tamanhos em CSS?",
+    "opcoes": [
+      "pixels (px)",
+      "porcentagem (%)",
+      "centímetros (cm)",
+      "pontos (pt)",
+      "em (em)"
+    ],
+    "correta": "pixels (px)"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é o seletor usado para selecionar elementos com base em sua classe em CSS?",
+    "opcoes": [
+      "ID selector (#)",
+      "Class selector (.)",
+      "Element selector",
+      "Attribute selector",
+      "Descendant selector"
+    ],
+    "correta": "Class selector (.)"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para centralizar um elemento horizontalmente em CSS?",
+    "opcoes": ["text-align", "margin", "padding", "float", "display"],
+    "correta": "margin"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para definir o estilo de texto em CSS?",
+    "opcoes": [
+      "font-style",
+      "text-decoration",
+      "font-weight",
+      "font-size",
+      "color"
+    ],
+    "correta": "font-style"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para definir a largura de um elemento em CSS?",
+    "opcoes": ["width", "height", "size", "length", "dimension"],
+    "correta": "width"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é o seletor usado para selecionar elementos com base em suas tags em CSS?",
+    "opcoes": [
+      "ID selector (#)",
+      "Class selector (.)",
+      "Element selector",
+      "Attribute selector",
+      "Descendant selector"
+    ],
+    "correta": "Element selector"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para definir o espaçamento entre as bordas internas de um elemento em CSS?",
+    "opcoes": ["padding", "margin", "border", "width", "height"],
+    "correta": "padding"
+  },
+  {
+    "tema": "CSS",
+    "pergunta": "Qual é a propriedade usada para definir a cor do texto em CSS?",
+    "opcoes": [
+      "color",
+      "background-color",
+      "font-color",
+      "text-color",
+      "font-style"
+    ],
+    "correta": "color"
+  },
+
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é a linguagem de programação usada para adicionar interatividade em páginas web?",
+    "opcoes": ["HTML", "CSS", "JavaScript", "PHP", "Python"],
+    "correta": "JavaScript"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o operador usado para atribuir um valor a uma variável em JavaScript?",
+    "opcoes": ["=", "+", "-", "*", "/"],
+    "correta": "="
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o método usado para exibir uma mensagem de diálogo em JavaScript?",
+    "opcoes": ["alert()", "console.log()", "while()", "if()", "log()"],
+    "correta": "alert()"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é a estrutura de controle usada para executar um bloco de código repetidamente em JavaScript?",
+    "opcoes": ["if-else", "for", "function", "switch", "return"],
+    "correta": "for"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o objeto global em JavaScript que fornece métodos para interagir com o documento HTML?",
+    "opcoes": ["document", "window", "console", "navigator", "location"],
+    "correta": "document"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o método usado para obter o comprimento de uma string em JavaScript?",
+    "opcoes": ["length()", "count()", "size()", "sizeOf()", "getSize()"],
+    "correta": "length()"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o operador usado para concatenar strings em JavaScript?",
+    "opcoes": ["+", "-", "*", "/", "&"],
+    "correta": "+"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é a palavra-chave usada para declarar uma variável em JavaScript?",
+    "opcoes": ["var", "undefined", "int", "variable", "v"],
+    "correta": "var"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o método usado para converter um valor em uma string em JavaScript?",
+    "opcoes": [
+      "toString()",
+      "toValue()",
+      "convertToString()",
+      "stringify()",
+      "parseString()"
+    ],
+    "correta": "toString()"
+  },
+  {
+    "tema": "JavaScript",
+    "pergunta": "Qual é o operador usado para comparar igualdade de valor e tipo em JavaScript?",
+    "opcoes": ["==", "===", "!=", "!==", "="],
+    "correta": "==="
+  },
+
+  {
+    "tema": "HTTP",
+    "pergunta": "Qual é o método HTTP usado para obter informações de um recurso específico?",
+    "opcoes": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    "correta": "GET"
+  },
+  {
+    "tema": "HTTP",
+    "pergunta": "Qual é o código de status HTTP que indica que um recurso foi encontrado com sucesso?",
+    "opcoes": ["200", "300", "400", "500", "600"],
+    "correta": "200"
+  },
+  {
+    "tema": "HTTP",
+    "pergunta": "Qual é o cabeçalho HTTP usado para negociar o tipo de conteúdo que um cliente pode aceitar do servidor?",
+    "opcoes": [
+      "Content-Type",
+      "Authorization",
+      "User-Agent",
+      "Accept",
+      "Cache-Control"
+    ],
+    "correta": "Accept"
+  },
+  {
+    "tema": "HTTP",
+    "pergunta": "Qual é o método HTTP usado para enviar dados para o servidor e criar um novo recurso?",
+    "opcoes": ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    "correta": "POST"
+  },
+  {
+    "tema": "HTTP",
+    "pergunta": "Qual é o cabeçalho HTTP usado para enviar dados adicionais ao servidor ao fazer uma requisição?",
+    "opcoes": [
+      "Content-Type",
+      "Authorization",
+      "User-Agent",
+      "Accept",
+      "Cache-Control"
+    ],
+    "correta": "Authorization"
+  },
+  {
+    "tema": "DNS",
+    "pergunta": "Qual é a função do DNS (Domain Name System) na Internet?",
+    "opcoes": [
+      "Converter endereços IP em nomes de domínio",
+      "Converter nomes de domínio em endereços IP",
+      "Criptografar comunicações na Internet",
+      "Gerenciar servidores de banco de dados",
+      "Controlar o tráfego de rede"
+    ],
+    "correta": "Converter nomes de domínio em endereços IP"
+  },
+  {
+    "tema": "DNS",
+    "pergunta": "Qual é o protocolo usado para as consultas DNS?",
+    "opcoes": ["TCP", "UDP", "IP", "HTTP", "SMTP"],
+    "correta": "UDP"
+  },
+  {
+    "tema": "DNS",
+    "pergunta": "Qual é o tipo de registro DNS usado para mapear um nome de domínio a um endereço IP?",
+    "opcoes": ["A", "CNAME", "MX", "TXT", "NS"],
+    "correta": "A"
+  },
+  {
+    "tema": "DNS",
+    "pergunta": "Qual é o servidor responsável por armazenar as informações de um domínio no DNS?",
+    "opcoes": [
+      "DNS primário",
+      "DNS secundário",
+      "DNS raiz",
+      "DNS local",
+      "DNS reverso"
+    ],
+    "correta": "DNS primário"
+  },
+  {
+    "tema": "DNS",
+    "pergunta": "Qual é o tempo de vida (TTL) de um registro DNS?",
+    "opcoes": [
+      "O período de validade do registro",
+      "O número máximo de consultas permitidas",
+      "O intervalo de tempo entre as consultas DNS",
+      "O tempo necessário para atualizar um registro",
+      "O tempo que um registro pode ser armazenado em cache"
+    ],
+    "correta": "O tempo que um registro pode ser armazenado em cache"
+  },
+
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a linguagem de programação usada para gerenciar bancos de dados relacionais?",
+    "opcoes": ["HTML", "CSS", "JavaScript", "SQL", "Python"],
+    "correta": "SQL"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a declaração SQL usada para selecionar dados de uma tabela?",
+    "opcoes": ["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"],
+    "correta": "SELECT"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a cláusula SQL usada para filtrar registros em uma consulta?",
+    "opcoes": ["WHERE", "FROM", "GROUP BY", "HAVING", "ORDER BY"],
+    "correta": "WHERE"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a declaração SQL usada para criar uma nova tabela?",
+    "opcoes": ["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"],
+    "correta": "CREATE"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a cláusula SQL usada para ordenar os resultados de uma consulta?",
+    "opcoes": ["WHERE", "FROM", "GROUP BY", "HAVING", "ORDER BY"],
+    "correta": "ORDER BY"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é o operador SQL usado para combinar condições em uma cláusula WHERE?",
+    "opcoes": ["AND", "ORDER", "NOT", "LIKE", "BETWEEN"],
+    "correta": "AND"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a declaração SQL usada para atualizar dados em uma tabela?",
+    "opcoes": ["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"],
+    "correta": "UPDATE"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a função SQL usada para retornar o valor máximo de uma coluna?",
+    "opcoes": ["MAX()", "MIN()", "COUNT()", "AVG()", "SUM()"],
+    "correta": "MAX()"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a declaração SQL usada para excluir registros de uma tabela?",
+    "opcoes": ["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"],
+    "correta": "DELETE"
+  },
+  {
+    "tema": "SQL",
+    "pergunta": "Qual é a função SQL usada para contar o número de registros em uma tabela?",
+    "opcoes": ["MAX()", "MIN()", "COUNT()", "AVG()", "SUM()"],
+    "correta": "COUNT()"
+  }
+]

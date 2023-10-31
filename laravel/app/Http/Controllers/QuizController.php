@@ -166,7 +166,7 @@ class QuizController extends Controller
 
         $this->saveVisit($quiz->id);
 
-        return $quiz;
+        return view('quiz.share', compact('quiz'));
     }
 
     private function saveVisit($quizID)
