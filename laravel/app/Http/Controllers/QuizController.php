@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\Quiz_access;
+use App\Models\Quiz_user;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -178,6 +180,43 @@ class QuizController extends Controller
         $this->saveVisit($quiz->id);
 
         return view('quiz.share', compact('quiz', 'questions'));
+    }
+
+    public function score($quizID)
+    {
+        $quiz = Quiz::where('id', $quizID)
+            ->where('date_start', '<=', date('Y-m-d H:i:s'))
+            ->where('date_end', '>=', date('Y-m-d H:i:s'))
+            ->firstOrFail();
+
+        return Quiz_user::select(['name', 'score'])
+            ->where('quiz_id', $quiz->id)
+            ->whereNotNull('score')
+            ->orderBy('score', 'desc')
+            ->limit(6)
+            ->get();
+    }
+
+    public function scoreStore($quizID, Request $request)
+    {
+        $quiz = Quiz::where('id', $quizID)
+            ->where('date_start', '<=', date('Y-m-d H:i:s'))
+            ->where('date_end', '>=', date('Y-m-d H:i:s'))
+            ->firstOrFail();
+
+        $appData = new Quiz_user();
+        $appData->quiz_id = $quiz->id;
+        $appData->name = $request->name ?? 'anonymous';
+        $appData->time_start = Carbon::createFromTimestampMs($request->time_start);
+        $appData->time_end = Carbon::createFromTimestampMs($request->time_end);
+        $appData->time_left = $request->time_left;
+        $appData->life_left = $request->life_left;
+        $appData->score = $request->score;
+        $appData->end_type = $request->end_type;
+        $appData->overlay_views = collect($request->overlay_views)->toJson();
+        $appData->questions = collect($request->questions)->toJson();
+        $appData->client = collect($request->client)->toJson();
+        $appData->save();
     }
 
     private function saveVisit($quizID)

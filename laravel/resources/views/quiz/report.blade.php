@@ -61,7 +61,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px">%</sup></h3>
-                    <p>Taxa de Rejeição</p>
+                    <p>Taxa de Sucesso</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-info-circle"></i>

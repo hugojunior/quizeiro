@@ -131,6 +131,31 @@
                 this.finished = false;
                 this.questionsJson = [];
                 this.questionsJson = {!! $questions !!};
+                this.appScore = [];
+                this.appData = {
+                    "name": this.name,
+                    "time_start": Date.now(),
+                    "time_end": null,
+                    "time_left": null,
+                    "life_left": 3,
+                    "score": null,
+                    "end_type": null,
+                    "overlay_views": [],
+                    "questions": [],
+                    "client":
+                    {
+                        "userAgent": window.navigator.userAgent,
+                        "vendor": window.navigator.vendor,
+                        "platform": window.navigator.platform,
+                        "language": window.navigator.language,
+                        "screen":
+                        {
+                            "width": window.screen.availWidth,
+                            "height": window.screen.availHeight
+                        }
+                    }
+                };
+                this.getScores();
             }
             , preload() {
                 this.input.keyboard.enabled = true;
@@ -244,7 +269,6 @@
                 document.querySelector("#questionPosition").innerHTML = `Questão ${this.currentQuestionIndex + 1} de ${this.questionsJson.length}`;
                 document.querySelector("#questionCorrect").innerHTML = `Acertos: ${this.questionsCorrects}`;
                 document.querySelector("#questionTitle").innerHTML = question.pergunta;
-                document.querySelector("#questionTag").innerHTML = question.tema;
                 question.opcoes.forEach((option, index) => {
                     document.querySelector("#qr").innerHTML += `<li data-r="${index + 1}">${this.htmlEncode(option)}</li>`;
                 });
@@ -277,6 +301,13 @@
             }
             , checkCorrectQuestion(questionIndex, answerNumber) {
                 var question = this.getQuestionByIndex(this.questionsJson, questionIndex);
+
+                this.appData.questions.push({
+                    "question": question.pergunta,
+                    "answers": question.opcoes,
+                    "correct": question.correta,
+                    "answer": question.opcoes[answerNumber - 1]
+                });
                 var correct = false;
                 if (question['opcoes'][answerNumber - 1] === question['correta']) {
                     correct = true;
@@ -320,6 +351,7 @@
                 this.lifes -= 1;
                 this.boxLifes.destroy();
                 this.boxLifes = this.add.image(744, 52, `boxLifes${this.lifes}`);
+                this.appData.life_left -= 1;
             }
             , loadLifeImages() {
                 for (var i = 0; i <= 3; i++) {
@@ -336,6 +368,9 @@
                 this.sQuestionTime.stop();
                 this.sGameOver.play();
                 this.timedEvent.remove(false);
+                this.appData.time_end = Date.now();
+                this.appData.end_type = 'gameover' + text;
+                this.sendAppData();
                 this.add.dom(400, 208).setInteractive().createFromCache('gameOver');
                 document.querySelector("#gameOverMessage").innerHTML = text || '';
                 document.querySelector("#gameOverScore").innerHTML = `Acertou ${this.questionsCorrects} de ${this.questionsJson.length} questões!`;
@@ -349,7 +384,10 @@
                 this.sQuestionTime.stop();
                 this.sGameSuccess.play();
                 this.timedEvent.remove(false);
-                this.setScore();
+                this.appData.time_end = Date.now();
+                this.appData.end_type = 'success';
+                this.setUserScore();
+                this.sendAppData();
                 this.add.dom(400, 208).setInteractive().createFromCache('gameFinished');
                 document.querySelector("#gameFinishedScore").innerHTML = `Acertou ${this.questionsCorrects} de ${this.questionsJson.length} questões<br> Pontuação: <strong>${this.userScore}</strong> [P]`;
                 document.querySelector("#playAgain").addEventListener('click', () => {
@@ -394,6 +432,7 @@
                         this.sQuestionTime.stop();
                     }
                     this.initialCountdownTime -= 1;
+                    this.appData.time_left = this.formatTime(this.initialCountdownTime);
                     this.countdownText.setText(this.formatTime(this.initialCountdownTime));
                 }
             }
@@ -412,7 +451,7 @@
                 }
                 const tween = this.add.tween({
                     targets: this.personBike60x79
-                    , x: this.personBike60x79.x + 36.5
+                    , x: this.personBike60x79.x + 73
                     , duration: 1000
                     , yoyo: false
                     , ease: 'Linear'
@@ -425,6 +464,7 @@
             }
             , showHelp() {
                 if (!this.helpBox) {
+                    this.appData.overlay_views.push('help');
                     this.helpBox = this.add.dom(400, 208).setInteractive().createFromCache('gameHelp');
                     document.querySelector("#closeHelp").addEventListener('click', () => {
                         this.showHelp();
@@ -436,16 +476,14 @@
             }
             , showScore() {
                 if (!this.scoreBox) {
-                    var scoreLocal = JSON.parse(localStorage.getItem("score") || "[]").sort((a, b) => {
-                        return b.score - a.score;
-                    }).slice(0, 6);
+                    this.appData.overlay_views.push('scores');
                     this.scoreBox = this.add.dom(400, 208).setInteractive().createFromCache('gameScore');
                     document.querySelector("#boxScore ol").innerHTML = new Array(6)
                         .fill('<li>[vazio]</li>')
                         .map((item, index) => {
-                            if (scoreLocal[index]) {
-                                var currentUser = this.name === scoreLocal[index].name ? ' <small>(você)</small>' : '';
-                                return `<li>${scoreLocal[index].score} - ${scoreLocal[index].name}${currentUser}</li>`;
+                            if (this.appScore[index]) {
+                                var currentUser = this.name === this.appScore[index].name ? ' <small>(você)</small>' : '';
+                                return `<li>${this.appScore[index].score} - ${this.appScore[index].name}${currentUser}</li>`;
                             }
                             return item;
                         })
@@ -458,17 +496,40 @@
                     this.scoreBox = false;
                 }
             }
-            , setScore() {
-                var scoreLocal = JSON.parse(localStorage.getItem("score") || "[]");
-                this.userScore = Math.round(((this.questionsCorrects * 100) + (this.initialCountdownTime * 5)) * 1000000 / 3800);
-                scoreLocal.push({
-                    name: this.name
-                    , score: this.userScore
+            , setUserScore() {
+                this.userScore = Math.round(((this.questionsCorrects * 100) + (this.initialCountdownTime * 5)) * 1000000 / 2100);
+                this.appData.score = this.userScore;
+            }
+            , setScores(serverData) {
+                this.appScore = serverData;
+            }
+            , getScores() {
+                fetch('/quizzes/scores/{{ $quiz->id }}', {
+                    method: "GET",
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    }
+                })
+                .then((response) => response.json())
+                .then((json) => {
+                    this.setScores(json);
                 });
-                localStorage.setItem("score", JSON.stringify(scoreLocal));
+            }
+            , sendAppData() {
+                fetch('/quizzes/scores/{{ $quiz->id }}', {
+                    method: "POST",
+                    body: JSON.stringify(this.appData),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8",
+                        "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    }
+                })
+                .then(() => this.getScores());
             }
             , showInfo() {
                 if (!this.infoBox) {
+                    this.appData.overlay_views.push('info');
                     this.infoBox = this.add.dom(400, 208).setInteractive().createFromCache('gameInfo');
                     document.querySelector("#closeInfo").addEventListener('click', () => {
                         this.showInfo();
@@ -481,6 +542,7 @@
             , showCredits() {
                 if (this.gameFinished) {
                     if (!this.ee1) {
+                        this.appData.overlay_views.push('credits');
                         this.sound.pauseAll();
                         this.ee1 = this.add.dom(400, 204).setInteractive().createFromCache('gameEe1');
                         document.querySelector("#closeEe1").addEventListener('click', () => {

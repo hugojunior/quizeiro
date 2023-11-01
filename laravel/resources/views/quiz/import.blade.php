@@ -27,16 +27,16 @@
 			Instruções
 		</div>
 		<div class="card-body">
-			<p>Essa página tem como finalidade ajudar com a importação de perguntas e respostas via <a href="https://chat.openai.com/" target="_blank">ChatGPT</a>.</p>
-            <p>Primeiramente, crie uma conta gratuita na plataforma e, no chat, utilize o seguinte prompt, substituindo '%%assunto%%' pelo tópico que você deseja abordar em seu Quiz:</p>
+			<p>Essa página tem como finalidade ajudar com a importação de perguntas e respostas via <a href="https://chat.openai.com/" target="_blank">ChatGPT</a> ou qualquer outra ferramenta que gere um arquivo JSON com <a href="/js/exemplo-perguntas.json" target="_blank">esse formato</a>.</p><br>
+            <h5>Utilizando o ChatGPT</h5>
+            <p>Primeiramente, crie uma conta gratuita na plataforma e, no chat, utilize o seguinte prompt, substituindo <strong>'%%assunto%%'</strong> pelo tópico que você deseja abordar em seu Quiz:</p>
             <blockquote>
                 <p class="font-italic">Crie uma API JSON com 10 perguntas sobre <strong>%%assunto%%</strong> onde cada pergunta deve ter 4 respostas e apenas a primeira opção deve ser correta. O texto das perguntas e respostas devem ser em português e as chaves do json em inglês.</p>
             </blockquote>
 
             <div class="row">
                 <div class="form-group col-md-12 col-12">
-                    <label for="gptJson">Cole aqui o JSON gerado pelo chatGPT</label>
-                    <textarea name="gptJson" id="gptJson" cols="30" rows="10" class="form-control @error('gptJson') is-invalid @enderror">{{ old('gptJson') }}</textarea>
+                    <textarea name="gptJson" id="gptJson" cols="30" rows="10" class="form-control @error('gptJson') is-invalid @enderror" placeholder="Cole aqui o seu JSON">{{ old('gptJson') }}</textarea>
                     @error('gptJson') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
             </div>

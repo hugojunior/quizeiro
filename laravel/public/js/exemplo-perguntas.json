@@ -1,0 +1,94 @@
+{
+    "questions": [
+      {
+        "question": "O que é um banco de dados?",
+        "answers": [
+          { "option": "a", "text": "Um sistema para armazenar e gerenciar dados", "correct": true },
+          { "option": "b", "text": "Um software para edição de imagens", "correct": false },
+          { "option": "c", "text": "Um tipo de linguagem de programação", "correct": false },
+          { "option": "d", "text": "Uma rede social", "correct": false }
+        ]
+      },
+      {
+        "question": "O que significa SQL?",
+        "answers": [
+          { "option": "a", "text": "Structured Query Language", "correct": true },
+          { "option": "b", "text": "Software Quality Lifecycle", "correct": false },
+          { "option": "c", "text": "Simple Query Logic", "correct": false },
+          { "option": "d", "text": "System Query Layer", "correct": false }
+        ]
+      },
+      {
+        "question": "Qual é a função principal de um Sistema de Gerenciamento de Banco de Dados (SGBD)?",
+        "answers": [
+          { "option": "a", "text": "Gerenciar e controlar o acesso aos dados", "correct": true },
+          { "option": "b", "text": "Criar sites da web", "correct": false },
+          { "option": "c", "text": "Produzir relatórios financeiros", "correct": false },
+          { "option": "d", "text": "Enviar e-mails", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é uma chave primária em um banco de dados?",
+        "answers": [
+          { "option": "a", "text": "Um campo que identifica exclusivamente uma linha em uma tabela", "correct": true },
+          { "option": "b", "text": "Um código de barras", "correct": false },
+          { "option": "c", "text": "Uma senha de administrador", "correct": false },
+          { "option": "d", "text": "Uma lista de contatos", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é a normalização de dados em bancos de dados?",
+        "answers": [
+          { "option": "a", "text": "Um processo para organizar dados de forma eficiente", "correct": true },
+          { "option": "b", "text": "Um método para criptografar informações", "correct": false },
+          { "option": "c", "text": "Uma técnica de compressão de dados", "correct": false },
+          { "option": "d", "text": "Uma forma de compartilhar dados em rede", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é um índice em um banco de dados?",
+        "answers": [
+          { "option": "a", "text": "Uma estrutura que melhora a velocidade de pesquisa de dados", "correct": true },
+          { "option": "b", "text": "Uma lista de todos os registros", "correct": false },
+          { "option": "c", "text": "Um campo obrigatório em todas as tabelas", "correct": false },
+          { "option": "d", "text": "Um tipo de software antivírus", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é um procedimento armazenado em bancos de dados?",
+        "answers": [
+          { "option": "a", "text": "Uma coleção de instruções SQL que pode ser reutilizada", "correct": true },
+          { "option": "b", "text": "Um arquivo de texto", "correct": false },
+          { "option": "c", "text": "Uma imagem de disco rígido", "correct": false },
+          { "option": "d", "text": "Uma pasta de arquivos", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é a linguagem de consulta NoSQL usada em bancos de dados?",
+        "answers": [
+          { "option": "a", "text": "Uma linguagem para consultar bancos de dados não relacionais", "correct": true },
+          { "option": "b", "text": "Uma linguagem de programação de alto nível", "correct": false },
+          { "option": "c", "text": "Um software de edição de vídeo", "correct": false },
+          { "option": "d", "text": "Uma linguagem de programação de baixo nível", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é a replicação de dados em bancos de dados?",
+        "answers": [
+          { "option": "a", "text": "O processo de copiar dados para manter redundância", "correct": true },
+          { "option": "b", "text": "A exclusão de dados antigos", "correct": false },
+          { "option": "c", "text": "A compactação de dados", "correct": false },
+          { "option": "d", "text": "A criação de novos dados", "correct": false }
+        ]
+      },
+      {
+        "question": "O que é a linguagem de programação SQL usada em bancos de dados?",
+        "answers": [
+          { "option": "a", "text": "Structured Query Language", "correct": true },
+          { "option": "b", "text": "Software Quality Lifecycle", "correct": false },
+          { "option": "c", "text": "Simple Query Logic", "correct": false },
+          { "option": "d", "text": "System Query Layer", "correct": false }
+        ]
+      }
+    ]
+  }

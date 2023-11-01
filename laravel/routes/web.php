@@ -40,3 +40,5 @@ Route::middleware(['auth'])->group(function () {
 
 // QUIZ - SHARE
 Route::get('/{username}/{quizSlug}', [QuizController::class, 'share'])->name('quizzes.share');
+Route::get('/quizzes/scores/{quizID}', [QuizController::class, 'score'])->name('quizzes.score');
+Route::post('/quizzes/scores/{quizID}', [QuizController::class, 'scoreStore'])->name('quizzes.score.store');
