@@ -24,7 +24,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>150</h3>
+                    <h3>{{ $totalVisits }}</h3>
                     <p>Visitas</p>
                 </div>
                 <div class="icon">
@@ -34,9 +34,9 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-success">
+            <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>53</h3>
+                    <h3>{{ $totalUniqueVisits }}</h3>
                     <p>Visitas Únicas</p>
                 </div>
                 <div class="icon">
@@ -48,7 +48,7 @@
         <div class="col-lg-3 col-6">
             <div class="small-box bg-purple">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{ $totalAnswers }}</h3>
                     <p>Respostas</p>
                 </div>
                 <div class="icon">
@@ -58,9 +58,9 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>{{ $successRate }}<sup style="font-size: 20px">%</sup></h3>
                     <p>Taxa de Sucesso</p>
                 </div>
                 <div class="icon">
@@ -76,7 +76,7 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="d-flex justify-content-between">
-                        <h3 class="card-title">Visitantes</h3>
+                        <h3 class="card-title">Visitantes e Respostas por Data</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -88,7 +88,7 @@
                             <i class="fas fa-square text-primary"></i> Visitantes
                         </span>
                         <span>
-                            <i class="fas fa-square text-gray"></i> Visitantes únicos
+                            <i class="fas fa-square text-gray"></i> Respostas
                         </span>
                     </div>
                 </div>
@@ -113,13 +113,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1; $i <= 5; $i++)
-                                <tr>
-                                    <td>01/01/2023</td>
-                                    <td>Nome do usuário</td>
-                                    <td>10000000</td>
-                                </tr>
-                            @endfor
+                            @foreach($scores as $score)
+                            <tr>
+                                <td>{{ $score->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $score->name }}</td>
+                                <td><strong>{{ $score->score }}</strong></td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -139,12 +139,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 1; $i <= 5; $i++)
-                                <tr>
-                                    <td>http://www.google.com.br</td>
-                                    <td>20</td>
-                                </tr>
-                            @endfor
+                            @foreach($refererAccess as $referer)
+                            <tr>
+                                <td><a href="{{ $referer->referrer }}" target="_blank">{{ $referer->referrer }}</a></td>
+                                <td><strong>{{ $referer->total }}</strong></td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -167,10 +167,10 @@ $(function() {
     var $visitorsChart = $('#visitors-chart')
     var visitorsChart = new Chart($visitorsChart, {
         data: {
-            labels: ['01', '05', '10', '15', '20', '25', '30'],
+            labels: {!! json_encode($dataGraphDates) !!},
             datasets: [{
                 type: 'line',
-                data: [100, 120, 170, 167, 180, 177, 160],
+                data: {!! json_encode($dataGraphVisits) !!},
                 backgroundColor: 'transparent',
                 borderColor: '#007bff',
                 pointBorderColor: '#007bff',
@@ -178,7 +178,7 @@ $(function() {
                 fill: false
             }, {
                 type: 'line',
-                data: [60, 80, 70, 67, 80, 77, 100],
+                data: {!! json_encode($dataGraphAnswers) !!},
                 backgroundColor: 'tansparent',
                 borderColor: '#ced4da',
                 pointBorderColor: '#ced4da',
@@ -206,11 +206,7 @@ $(function() {
                         lineWidth: '4px',
                         color: 'rgba(0, 0, 0, .2)',
                         zeroLineColor: 'transparent'
-                    },
-                    ticks: $.extend({
-                        beginAtZero: true,
-                        suggestedMax: 200
-                    }, ticksStyle)
+                    }
                 }],
                 xAxes: [{
                     display: true,

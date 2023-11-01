@@ -8,6 +8,7 @@ use App\Models\Quiz_user;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -154,7 +155,41 @@ class QuizController extends Controller
             ->where('user_id', Auth::user()->id)
             ->firstOrFail();
 
-        return view('quiz.report', compact('quiz'));
+        $totalVisits = Quiz_access::where('quiz_id', $quiz->id)->count();
+        $totalUniqueVisits = Quiz_access::select('ip', 'user_agent')->where('quiz_id', $quiz->id)->groupBy('ip', 'user_agent')->get()->count();
+        $refererAccess = Quiz_access::select('referrer', DB::raw('COUNT(*) as total'))->where('quiz_id', $quiz->id)->whereNotNull('referrer')->groupBy('referrer')->limit(10)->get();
+        $totalAnswers = Quiz_user::where('quiz_id', $quiz->id)->count();
+        $totalSuccessAnswers = Quiz_user::where('quiz_id', $quiz->id)->where('end_type', 'success')->count();
+        $successRate = $totalAnswers > 0 ? round(($totalSuccessAnswers / $totalAnswers) * 100, 2) : 0;
+        $scores = Quiz_user::select(['created_at','name', 'score'])
+            ->where('quiz_id', $quiz->id)
+            ->whereNotNull('score')
+            ->orderBy('score', 'desc')
+            ->limit(10)
+            ->get();
+        $lastDays = collect(array_map(fn ($day) => Carbon::now()->copy()->subDays($day), range(0, 13)))->reverse();
+        $dataGraphVisits = [];
+        $dataGraphAnswers = [];
+        $dataGraphDates = [];
+
+        foreach($lastDays as $day) {
+            $dataGraphVisits[] = Quiz_access::where('quiz_id', $quiz->id)->whereDate('created_at', $day)->count();
+            $dataGraphAnswers[] = Quiz_user::where('quiz_id', $quiz->id)->whereDate('created_at', $day)->count();
+            $dataGraphDates[] = $day->format('d/m');
+        }
+
+        return view('quiz.report', compact(
+            'quiz',
+            'totalVisits',
+            'totalUniqueVisits',
+            'totalAnswers',
+            'successRate',
+            'scores',
+            'refererAccess',
+            'dataGraphVisits',
+            'dataGraphAnswers',
+            'dataGraphDates'
+        ));
     }
 
     public function share($username, $quizSlug)

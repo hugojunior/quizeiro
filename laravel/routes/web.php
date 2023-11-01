@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('home-public');
-});
+Route::get('/', [HomeController::class, 'public'])->name('site');
 
 Route::middleware(['auth'])->group(function () {
 
