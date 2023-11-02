@@ -31,7 +31,7 @@
             <h5>Utilizando o ChatGPT</h5>
             <p>Primeiramente, crie uma conta gratuita na plataforma e, no chat, utilize o seguinte prompt, substituindo <strong>'%%assunto%%'</strong> pelo tópico que você deseja abordar em seu Quiz:</p>
             <blockquote>
-                <p class="font-italic">Crie uma API JSON com 10 perguntas sobre <strong>%%assunto%%</strong> onde cada pergunta deve ter 4 respostas e apenas a primeira opção deve ser correta. As perguntas e respostas devem ter no máximo 100 caracteres cada e o JSON deve seguir o seguinte formato: {"questions": [{"question": "","answers": [{ "text": "", "correct": boolean },{ "text": "", "correct": boolean },{ "text": "", "correct": boolean },{ "text": "", "correct": boolean }]},}</p>
+                <p class="font-italic">Crie uma API JSON com 10 perguntas sobre <strong>%%assunto%%</strong> onde cada pergunta deve ter 4 respostas e apenas a primeira opção deve ser correta. As perguntas e respostas devem ter no máximo 100 caracteres cada e o JSON deve seguir o seguinte formato: {"questions":[{"question":"","answers":[{"text":""}]},}</p>
             </blockquote>
 
             <div class="row">
