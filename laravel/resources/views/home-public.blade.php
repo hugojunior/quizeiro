@@ -3,9 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="Quizeiro é uma plataforma gratuita que permite que os usuários criem seus próprios quizzes personalizados e os compartilhem com amigos." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@hugojuniior" />
+    <meta name="twitter:creator" content="@hugojuniior" />
+    <meta property="og:title" content="Quizeiro - Crie Quizzes Personalizados Gratuitamente" />
+    <meta property="og:description" content="Quizeiro é uma plataforma gratuita que permite que os usuários criem seus próprios quizzes personalizados e os compartilhem com amigos." />
+    <meta property="og:url" content="https://quizeiro.games/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://quizeiro.games/images/logo-400x400-silver.png">
+    <meta name="keywords" content="quiz,quizeiro,quizdev,quiz online,gratis,personalizado,aprender,estudar,jogar,projeto,uni7,faculdade" />
+    <meta name="author" content="Hugo Júnior" />
     <title>Quizeiro - Crie Quizzes Personalizados Gratuitamente</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERL5WHWKZ8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ERL5WHWKZ8');
+    </script>
 </head>
 
 <body>

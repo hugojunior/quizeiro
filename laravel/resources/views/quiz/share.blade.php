@@ -14,7 +14,7 @@
     <meta property="og:description" content="{{ $quiz->description }}" />
     <meta property="og:url" content="https://quizeiro.games/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://quizdev.hugojunior.com/images/game-preview.png">
+    <meta property="og:image" content="https://quizeiro.games/images/logo-400x400-silver.png">
     <meta name="keywords" content="quiz,quizeiro,quizdev,quiz online,gratis,personalizado,aprender,estudar,jogar,projeto,uni7,faculdade" />
     <meta name="author" content="Hugo Júnior" />
     <title>Quizeiro - {{ $quiz->title }}</title>
@@ -25,6 +25,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERL5WHWKZ8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ERL5WHWKZ8');
+    </script>
     <script type="text/javascript">
         var User = new Phaser.Class({
             Extends: Phaser.Scene
