@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'public'])->name('site');
+Route::post('/contact', [HomeController::class, 'sendContact'])->name('contact');
 
 Route::middleware(['auth'])->group(function () {
 

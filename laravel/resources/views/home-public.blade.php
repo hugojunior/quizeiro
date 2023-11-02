@@ -163,20 +163,30 @@
             <p class="text-center">Tem alguma pergunta ou comentário? Ficaremos felizes em ouvir você.</p>
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
-                    <form>
+                    @if(Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ Session::get('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
+                    <form method="POST" action="{{ route('contact') }}">
+                        @csrf
                         <div class="mb-3">
-                            <label for="nome" class="form-label">Seu Nome</label>
-                            <input type="text" class="form-control" id="nome" required>
+                            <label for="name" class="form-label">Seu Nome</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Digite seu nome" maxlength="30" required>
+                            @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Seu E-mail</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Digite seu e-mail" maxlength="30" required>
+                            @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="mensagem" class="form-label">Mensagem</label>
-                            <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" rows="5" placeholder="Digite sua mensagem" required>{{ old('message') }}</textarea>
+                            @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        <button type="submit" id="btnContact" class="btn btn-primary">Enviar Mensagem</button>
                     </form>
                 </div>
             </div>
@@ -197,6 +207,10 @@
             $('#logout').click(function(e) {
                 e.preventDefault();
                 $('#logout-form').submit();
+            });
+            $('#btnContact').click(function(){
+                $(this).addClass('disabled');
+                $(this).html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
             });
         });
     </script>
