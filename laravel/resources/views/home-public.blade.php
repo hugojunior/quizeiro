@@ -149,7 +149,7 @@
                         </div>
                     </div>
                     @empty
-                        <p>No users</p>
+                        <p class="text-center">Sem quizzes públicos, por enquanto.</p>
                     @endforelse
                 </div>
             </div>
