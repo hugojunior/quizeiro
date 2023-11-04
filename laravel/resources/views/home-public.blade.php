@@ -206,7 +206,7 @@
                                 <p class="card-text">{{ Str::limit($quiz->description, 50) }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" class="btn btn-sm btn-outline-secondary">Visualizar</a>
+                                        <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" target="_blank" class="btn btn-sm btn-outline-secondary">Visualizar</a>
                                     </div>
                                     <small class="text-muted">{{ $quiz->created_at->diffForHumans() }}</small>
                                 </div>
