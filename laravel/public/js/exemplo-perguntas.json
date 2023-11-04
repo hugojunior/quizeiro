@@ -1,0 +1,94 @@
+{
+    "questions": [
+      {
+        "question": "O que é IA?",
+        "answers": [
+          {"text": "Uma área da informática que se dedica a criar sistemas inteligentes."},
+          {"text": "Um jogo de tabuleiro."},
+          {"text": "Um animal de estimação."},
+          {"text": "Uma linguagem de programação."}
+        ]
+      },
+      {
+        "question": "Qual é o objetivo da IA?",
+        "answers": [
+          {"text": "Desenvolver sistemas que podem realizar tarefas inteligentes."},
+          {"text": "Construir robôs gigantes."},
+          {"text": "Fazer previsões meteorológicas."},
+          {"text": "Produzir música clássica."}
+        ]
+      },
+      {
+        "question": "Quais são as duas categorias principais de IA?",
+        "answers": [
+          {"text": "IA fraca e IA forte."},
+          {"text": "IA amigável e IA hostil."},
+          {"text": "IA pequena e IA grande."},
+          {"text": "IA rápida e IA lenta."}
+        ]
+      },
+      {
+        "question": "O que é aprendizado de máquina?",
+        "answers": [
+          {"text": "Um subcampo da IA que se concentra em sistemas que podem aprender com dados."},
+          {"text": "Um método para ensinar cães novos truques."},
+          {"text": "Um tipo de carro esportivo."},
+          {"text": "Uma língua falada em Marte."}
+        ]
+      },
+      {
+        "question": "Quais são os benefícios da IA na medicina?",
+        "answers": [
+          {"text": "Melhor diagnóstico e tratamento de doenças."},
+          {"text": "Preparo de refeições gourmet."},
+          {"text": "Manutenção de jardins."},
+          {"text": "Conserto de carros."}
+        ]
+      },
+      {
+        "question": "O que é um chatbot?",
+        "answers": [
+          {"text": "Um programa de computador que pode conversar com pessoas."},
+          {"text": "Um tipo de barco."},
+          {"text": "Um prato de comida típico de algum lugar."},
+          {"text": "Um tipo de robô de combate."}
+        ]
+      },
+      {
+        "question": "O que é IA ética?",
+        "answers": [
+          {"text": "Um campo que se preocupa com questões morais na IA."},
+          {"text": "Uma competição de corrida de carros autônomos."},
+          {"text": "Uma nova forma de arte abstrata."},
+          {"text": "Uma categoria de esportes radicais."}
+        ]
+      },
+      {
+        "question": "O que são redes neurais artificiais?",
+        "answers": [
+          {"text": "Um modelo computacional inspirado no funcionamento do cérebro humano."},
+          {"text": "Uma técnica de pesca com rede."},
+          {"text": "Um tipo de avião de caça."},
+          {"text": "Um instrumento musical de cordas."}
+        ]
+      },
+      {
+        "question": "Quem é considerado o pai da IA?",
+        "answers": [
+          {"text": "Alan Turing."},
+          {"text": "Steve Jobs."},
+          {"text": "Elon Musk."},
+          {"text": "Albert Einstein."}
+        ]
+      },
+      {
+        "question": "O que é Aprendizado Profundo (Deep Learning)?",
+        "answers": [
+          {"text": "Um subcampo de IA que se concentra em redes neurais profundas."},
+          {"text": "Um tipo de mergulho submarino."},
+          {"text": "Um estilo de música pesada."},
+          {"text": "Uma técnica de jardinagem profissional."}
+        ]
+      }
+    ]
+}

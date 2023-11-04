@@ -56,7 +56,7 @@ services:
             context: ./
             dockerfile: Dockerfile
         restart: unless-stopped
-        command: "php artisan queue:work"
+        command: "php laravel/artisan queue:work"
         volumes: 
             - ./:/var/www
         depends_on: 

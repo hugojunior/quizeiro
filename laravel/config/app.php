@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Fortaleza',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,7 +159,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -182,7 +182,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
     ])->toArray(),
 
 ];

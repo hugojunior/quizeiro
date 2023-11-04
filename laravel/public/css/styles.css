@@ -1,0 +1,536 @@
+@import url("normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Source+Serif+Pro:ital@0;1&display=swap");
+
+body {
+  margin: 0;
+  background-color: #292737;
+  color: #edeeea;
+  font-family: "Courier Prime", "Courier New", Courier, monospace;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+a {
+  color: #ffb500;
+}
+
+button {
+  cursor: pointer;
+}
+
+.colour-1 {
+  color: #edeeea;
+}
+
+.colour-2 {
+  color: #ed9c7b;
+}
+
+.colour-3 {
+  color: #ee642e;
+}
+
+.colour-4 {
+  color: #4c373e;
+}
+
+.colour-5 {
+  color: #292737;
+}
+
+.colour-5 {
+  color: #fab40a;
+}
+
+.blink {
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.creditos a {
+  text-decoration: none;
+}
+
+.creditos {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  color: #edeeea;
+}
+
+canvas {
+  margin: 0;
+  padding: 0;
+  outline: 1px solid #8682a0;
+}
+
+#container {
+  margin: 0 auto;
+  display: block;
+  width: 800px;
+  padding: 20px 0;
+}
+
+#container hr {
+  border-bottom: 1px solid #292737;
+  border-top: 1px solid #8682a0;
+}
+
+#container h1 {
+    font-size: 26px;
+}
+
+#container p {
+    padding: 10px 0 20px 0;
+}
+
+#container h1 a {
+  text-decoration: none;
+}
+
+#qTags {
+  background-color: #999;
+  color: #000;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: none;
+  font-size: 12px;
+}
+
+#formUser {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nameUser {
+  display: inline-block;
+  color: #292737;
+  border-radius: 0px;
+  padding: 10px 20px;
+  text-align: center;
+  border: 2px solid #8682a0;
+  background-color: #edeeea;
+  width: 200px;
+  box-shadow: 3px 6px rgba(134, 130, 160, 0.3);
+}
+.nameUser:focus {
+  outline: none;
+  border: 2px solid #a77700;
+}
+
+.btnUser {
+  display: inline-block;
+  border-radius: 0px;
+  padding: 10px;
+  text-align: center;
+  margin-top: 10px;
+  color: #292737;
+  background-color: #fab40a;
+  font-weight: bold;
+  border: 2px solid #a77700;
+  box-shadow: 3px 6px rgba(134, 130, 160, 0.3);
+}
+
+#boxBriefing {
+  width: 800px;
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 2px 1px #292737;
+}
+
+#boxBriefing .boxBriefingContainer {
+  margin: 0 auto;
+  background-color: rgba(134, 130, 160, 0.2);
+  padding: 20px;
+  width: 700px;
+  height: 260px;
+  position: relative;
+}
+
+#boxBriefing .boxBriefingContainer h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#boxBriefing .boxBriefingContainer p,
+#boxBriefing .boxBriefingContainer ul {
+  margin: 0px;
+}
+
+#boxBriefing .btnInfo {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  display: block;
+  border-radius: 0px;
+  padding: 10px 30px;
+  text-align: center;
+  margin-top: 10px;
+  color: #292737;
+  background-color: #fab40a;
+  font-weight: bold;
+  border: 2px solid #a77700;
+  width: 200px;
+  box-shadow: 3px 6px rgba(134, 130, 160, 0.3);
+}
+
+#boxQuestion {
+  width: 800px;
+  text-shadow: 1px 0 #292737;
+}
+
+.boxQuestionContainer {
+  margin: 0 auto;
+  background-color: rgba(41, 39, 55, 0.9);
+  padding: 10px 20px;
+  width: 700px;
+  height: 240px;
+  position: relative;
+  line-height: 22px;
+  font-size: 14px;
+  border: 1px solid #292737;
+}
+
+.boxQuestionContainer h1 {
+  text-align: center;
+  padding: 0 0 5px 0;
+  margin: 0;
+  font-size: 20px;
+  border-bottom: 1px solid #292737;
+}
+
+.boxQuestionContainer h1 #questionCorrect {
+  color: #fab40a;
+}
+
+.boxQuestionContainer .questionTitle {
+  border-top: 1px solid #8682a0;
+  margin: 0;
+  padding-top: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.boxQuestionContainer ol {
+  list-style: none;
+  counter-reset: counter;
+  padding: 0;
+}
+
+.boxQuestionContainer ol li {
+  cursor: pointer;
+}
+
+.boxQuestionContainer ol li {
+  counter-increment: counter;
+  margin-bottom: 5px;
+}
+
+.boxQuestionContainer ol li::before {
+  content: counter(counter);
+  color: #292737;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fab40a;
+  padding: 2px 8px;
+  margin-right: 10px;
+  text-shadow: none;
+}
+
+#boxTags {
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
+
+#boxTags .tag {
+  font-size: 12px;
+  background-color: #fab40a;
+  color: #292737;
+  padding: 2px 10px;
+  font-weight: normal;
+}
+
+#boxGameOver,
+#boxInfo,
+#boxHelp,
+#boxEe1,
+#boxScore,
+#boxGameFinished {
+  width: 800px;
+  text-align: center;
+  text-shadow: 1px 0 #292737;
+}
+
+#boxGameOver .boxGameOverContainer {
+  margin: 0 auto;
+  background-color: rgba(41, 39, 55, 0.9);
+  padding: 20px 0px 0px 0px;
+  width: 280px;
+  height: 231px;
+  position: relative;
+  line-height: 22px;
+  font-size: 14px;
+  border: 1px solid #292737;
+}
+
+#boxGameOver .boxGameOverContainer h1 {
+  text-align: center;
+  padding: 10px 0 0 0;
+  margin: 0;
+  font-size: 36px;
+  color: #ff0000;
+}
+
+#boxGameOver .boxGameOverContainer h3 {
+  color: #fab40a;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#boxGameOver #playAgain {
+  display: block;
+  width: 100%;
+  background-color: #fab40a;
+  color: #292737;
+  padding: 8px 0;
+  border: 0;
+  font-weight: bold;
+}
+
+#boxInfo,
+#boxHelp,
+#boxScore {
+  background-color: #25212c;
+  border: 1px solid #292737;
+}
+
+#boxInfo .boxInfoContainer,
+#boxScore .boxScoreContainer {
+  margin: 0 auto;
+  padding: 20px;
+  width: 300px;
+  height: 220px;
+  position: relative;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+#boxInfo .boxInfoContainer h1 {
+  color: #fab40a;
+  font-size: 20px;
+  margin: 5px 0 0 0;
+}
+
+#boxInfo .boxInfoContainer p {
+  margin-top: 10px;
+}
+
+#boxInfo .boxInfoContainer img {
+  border-radius: 50%;
+  border: 2px solid #fab40a;
+}
+
+#boxInfo #closeInfo,
+#boxScore #closeScore {
+  display: block;
+  width: 100%;
+  background-color: #25212c;
+  color: #fab40a;
+  padding: 8px 0;
+  border: 0;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #fab40a;
+}
+
+#boxHelp .boxHelpContainer {
+  text-align: left;
+  margin: 0 auto;
+  padding: 20px;
+  width: 600px;
+  height: 220px;
+  position: relative;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+#boxHelp .boxHelpContainer h1 {
+  padding: 10px 0 0 0;
+  margin: 0;
+  font-size: 24px;
+  color: #fab40a;
+}
+
+#boxHelp ul {
+  padding-left: 20px;
+}
+
+#boxHelp #closeHelp {
+  display: block;
+  width: 100%;
+  background-color: #25212c;
+  color: #fab40a;
+  padding: 8px 0;
+  border: 0;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #fab40a;
+}
+
+#boxGameFinished .boxGameFinishedContainer {
+  margin: 0 auto;
+  background-color: rgba(41, 39, 55, 0.9);
+  padding: 20px 0px 0px 0px;
+  width: 380px;
+  height: 234px;
+  position: relative;
+  line-height: 22px;
+  font-size: 14px;
+  border: 1px solid #292737;
+}
+
+#boxGameFinished .boxGameFinishedContainer h1 {
+  text-align: center;
+  padding: 10px 0 0 0;
+  margin: 0;
+  font-size: 32px;
+  color: #008000;
+}
+
+#boxGameFinished .boxGameFinishedContainer h3 {
+  color: #fab40a;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+#boxGameFinished #playAgain {
+  display: inline-block;
+  width: 348px;
+  background-color: #fab40a;
+  color: #292737;
+  padding: 8px 0;
+  border: 0;
+  font-weight: bold;
+  border: 1px solid #fab40a;
+}
+
+#boxGameFinished #credits {
+  display: inline-block;
+  width: 32px;
+  background-color: transparent;
+  color: #fab40a;
+  padding: 8px 0;
+  border: 0;
+  font-weight: normal;
+  border: 1px solid #fab40a;
+}
+
+#boxEe1 {
+  background-color: #292737;
+}
+
+#boxEe1 .boxEe1Container {
+  text-align: left;
+  margin: 0 auto;
+  width: 798px;
+  height: 420px;
+  position: relative;
+  line-height: 22px;
+  font-size: 30px;
+  border: none;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#boxEe1 .boxEe1Container h1 {
+  padding: 10px 0 0 0;
+  margin: 0;
+  line-height: 35px;
+  font-size: 28px;
+  color: #fab40a;
+  font-weight: normal;
+  font-family: "Source Serif Pro", serif;
+}
+
+#boxEe1 .boxEe1Container p {
+  font-family: "Source Serif Pro", serif;
+}
+
+#boxEe1 .boxEe1Container img {
+  border-radius: 50%;
+  border: 2px solid #25212c;
+  margin: 20px auto 10px auto;
+  display: block;
+}
+
+#boxEe1 #closeEe1 {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  display: block;
+  width: 100%;
+  background-color: #25212c;
+  color: #fab40a;
+  padding: 8px 0;
+  border: 0;
+  font-weight: bold;
+  font-size: 12px;
+  border-top: 1px solid #8682a0;
+  border-bottom: 1px solid #8682a0;
+}
+
+#boxScore .boxScoreContainer h1 {
+  color: #fab40a;
+  font-size: 26px;
+  margin: 5px 0 0 0;
+  text-align: center;
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #fab40a;
+}
+
+#boxScore li {
+  text-align: left;
+}
+
+#boxScore li small {
+  color: #fab40a;
+  font-size: 12px;
+}
+
+.text-desc {
+    display: block;
+    background:#25212c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.link-github {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.share {
+    font-size: 30px;
+    text-decoration: none;
+}
