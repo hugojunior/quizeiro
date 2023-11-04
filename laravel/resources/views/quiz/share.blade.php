@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@hugojuniior" />
     <meta name="twitter:creator" content="@hugojuniior" />
-    <meta property="og:title" content="{{ $quiz->title }}" />
+    <meta property="og:title" content="Quizeiro - {{ $quiz->title }}" />
     <meta property="og:description" content="{{ $quiz->description }}" />
     <meta property="og:url" content="https://quizeiro.games/" />
     <meta property="og:type" content="website" />
