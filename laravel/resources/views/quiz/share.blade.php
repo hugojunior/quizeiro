@@ -192,6 +192,19 @@
                     this.load.image('backgroundGame', '/images/bg-scene-game-night.png');
                 }
             }
+            , shuffleQuestions() {
+                var currentIndex = this.questionsJson.length
+                    , temporaryValue
+                    , randomIndex;
+                while (0 !== currentIndex) {
+                    randomIndex = Math.floor(Math.random() * currentIndex);
+                    currentIndex -= 1;
+                    temporaryValue = this.questionsJson[currentIndex];
+                    this.questionsJson[currentIndex] = this.questionsJson[randomIndex];
+                    this.questionsJson[currentIndex]['opcoes'] = this.questionsJson[randomIndex]['opcoes'].sort(() => Math.random() - 0.5).slice(0, 4);
+                    this.questionsJson[randomIndex] = temporaryValue;
+                }
+            }
             , create() {
                 this.add.image(400, 214, 'backgroundGame');
                 this.add.image(135, 35, 'boxName');
@@ -267,6 +280,7 @@
                     this.scene.restart();
                     this.scene.start('user');
                 }, this);
+                this.shuffleQuestions();
                 this.currentQuestionIndex = 0;
                 this.showQuestion();
                 this.eventKeys();
@@ -641,7 +655,7 @@
                     }
                 }
             }
-            , scene: [User, Info, Game]
+            , scene: [Game]
         };
         var game = new Phaser.Game(config);
 
