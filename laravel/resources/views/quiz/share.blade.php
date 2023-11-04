@@ -655,7 +655,7 @@
                     }
                 }
             }
-            , scene: [Game]
+            , scene: [User, Info, Game]
         };
         var game = new Phaser.Game(config);
 
