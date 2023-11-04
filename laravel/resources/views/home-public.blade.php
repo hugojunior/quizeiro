@@ -146,7 +146,7 @@
     <section class="py-5 text-center container" id="home">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Bem-vindo ao Quizeiro!</h1>
+                <h1 class="fw-light">Bem-vindo ao <strong>Quizeiro</strong>!</h1>
                 <p class="lead text-muted">Quizeiro é uma plataforma gratuita que permite que os usuários criem seus
                     próprios quizzes personalizados e os compartilhem com amigos.</p>
                 <p>
@@ -169,7 +169,7 @@
                 <div class="col-lg-4">
                     <h3 class="fw-light">2. Crie seu Quiz</h3>
                     <img src="/images/banner-customize.png" alt="Crie" width="100%">
-                    <p class="pt-2">Personalize e crie quizzes com perguntas e respostas!"</p>
+                    <p class="pt-2">Personalize e crie quizzes com perguntas e respostas!</p>
                 </div>
                 <div class="col-lg-4">
                     <h3 class="fw-light">3. Compartilhe</h3>
