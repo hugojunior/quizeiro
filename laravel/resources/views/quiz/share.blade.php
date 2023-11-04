@@ -14,7 +14,7 @@
     <meta property="og:description" content="{{ $quiz->description }}" />
     <meta property="og:url" content="https://quizeiro.games/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://quizeiro.games/images/logo-400x400-silver.png">
+    <meta property="og:image" content="https://quizeiro.games/images/banner-social.png">
     <meta name="keywords" content="quiz,quizeiro,quizdev,quiz online,gratis,personalizado,aprender,estudar,jogar,projeto,uni7,faculdade" />
     <meta name="author" content="Hugo Júnior" />
     <title>Quizeiro - {{ $quiz->title }}</title>
