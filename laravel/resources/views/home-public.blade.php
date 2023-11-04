@@ -234,7 +234,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('contact') }}">
+                    <form method="POST" action="{{ route('contact') }}" id="formContact">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
@@ -273,9 +273,10 @@
                 e.preventDefault();
                 $('#logout-form').submit();
             });
-            $('#btnContact').click(function(){
-                $(this).addClass('disabled');
-                $(this).html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
+            $('#formContact').submit(function(e) {
+                //e.preventDefault();
+                $('#btnContact').addClass('disabled');
+                $('#btnContact').html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
             });
         });
     </script>
