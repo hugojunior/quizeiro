@@ -109,6 +109,7 @@
                                             <div class="form-group col-md-12 col-12">
                                                 <label class="col-form-label" for="answers-{{ $i }}-{{ $a }}">Resposta correta</label>
                                                     <input type="text" class="form-control is-valid" name="answers-{{ $i }}-{{ $a }}" id="answers-{{ $i }}-{{ $a }}" value="{{ old('answers-' . $i . '-' . $a, request()->session()->get('gptFields.answers-'. $i . '-' . $a)) }}" maxlength="100">
+                                                    @error('answers-' . $i . '-' . $a) <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>
                                         @else
                                             <div class="form-group col-md-12 col-12">
@@ -116,6 +117,7 @@
                                                     <label class="col-form-label">Respostas incorretas</label>
                                                 @endif
                                                     <input type="text" class="form-control is-invalid" name="answers-{{ $i }}-{{ $a }}" id="answers-{{ $i }}-{{ $a }}" value="{{ old('answers-' . $i . '-' . $a, request()->session()->get('gptFields.answers-'. $i . '-' . $a)) }}" maxlength="100">
+                                                    @error('answers-' . $i . '-' . $a) <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>
                                         @endif
                                     </div>

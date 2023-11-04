@@ -320,14 +320,22 @@ class QuizController extends Controller
             'period' => 'bail|required'
         ];
 
+        $vQuestions = [];
         for($i = 1;$i <= 10;$i++) {
-            $rules['question-' . $i] = 'bail|required|min:1|max:100';
+            $questionKey = 'question-' . $i;
+            $rules[$questionKey] = 'bail|required|min:1|max:100|not_in:' . implode(',', $vQuestions);
+            $vQuestions[] = $fields->$questionKey;
+            $vAnswers = [];
             for($j = 1;$j <= 4;$j++) {
-                $rules['answers-'.$i.'-'.$j] = 'bail|required|min:1|max:100';
+                $answerKey = 'answers-' . $i . '-' . $j;
+                $rules[$answerKey] = 'bail|required|min:1|max:100|not_in:' . implode(',', $vAnswers);
+                $vAnswers[] = $fields->$answerKey;
             }
         }
 
-        $this->validate($fields, $rules);
+        $this->validate($fields, $rules, [
+            'not_in' => 'A pergunta ou resposta (:attribute) não pode se repetir!'
+        ]);
     }
 
 }
