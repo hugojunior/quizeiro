@@ -43,10 +43,32 @@ class QuizController extends Controller
 
         $gptJson = json_decode($request->gptJson);
 
+        foreach($gptJson->questions as $question) {
+            if (strlen($question->question) > 100) {
+                return redirect()
+                    ->route('quizzes.import')
+                    ->with([
+                        'error' => 'A pergunta não pode ter mais de 100 caracteres: ' . $question->question,
+                        'gptJson' => $request->gptJson
+                    ]);
+            }
+
+            foreach($question->answers as $answer) {
+                if (strlen($answer->text) > 100) {
+                    return redirect()
+                        ->route('quizzes.import')
+                        ->with([
+                            'error' => 'A resposta não pode ter mais de 100 caracteres: ' . $answer->text,
+                            'gptJson' => $request->gptJson
+                        ]);
+                }
+            }
+        }
+
         if (count($gptJson->questions) !== 10) {
             return redirect()
-                ->route('quizzes.index')
-                ->with('error', 'JSON inválido!');
+                ->route('quizzes.import')
+                ->with('error', 'Não foi possível identificar as 10 perguntas no seu JSON!');
         }
 
         $data = [

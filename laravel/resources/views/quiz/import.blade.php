@@ -36,7 +36,7 @@
 
             <div class="row">
                 <div class="form-group col-md-12 col-12">
-                    <textarea name="gptJson" id="gptJson" cols="30" rows="10" class="form-control @error('gptJson') is-invalid @enderror" placeholder="Cole aqui o seu JSON">{{ old('gptJson') }}</textarea>
+                    <textarea name="gptJson" id="gptJson" cols="30" rows="10" class="form-control @error('gptJson') is-invalid @enderror" placeholder="Cole aqui o seu JSON">{{ old('gptJson', Session::get('gptJson')) }}</textarea>
                     @error('gptJson') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
             </div>
