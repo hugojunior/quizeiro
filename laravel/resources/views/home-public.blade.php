@@ -52,7 +52,7 @@
             --bs-btn-bg: #423056;
             --bs-btn-border-color: #423056;
             --bs-btn-hover-color: #fff;
-            --bs-btn-hover-bg: #292737;
+            --bs-btn-hover-bg: #423056;
             --bs-btn-hover-border-color: #2b2337;
             --bs-btn-focus-shadow-rgb: 49,132,253;
             --bs-btn-active-color: #fff;
@@ -206,7 +206,7 @@
                                 <p class="card-text">{{ Str::limit($quiz->description, 50) }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" class="btn btn-sm btn-outline-secondary">Visualizar</a>
+                                        <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" target="_blank" class="btn btn-sm btn-outline-secondary">Visualizar</a>
                                     </div>
                                     <small class="text-muted">{{ $quiz->created_at->diffForHumans() }}</small>
                                 </div>
@@ -234,7 +234,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
-                    <form method="POST" action="{{ route('contact') }}">
+                    <form method="POST" action="{{ route('contact') }}" id="formContact">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
@@ -273,9 +273,10 @@
                 e.preventDefault();
                 $('#logout-form').submit();
             });
-            $('#btnContact').click(function(){
-                $(this).addClass('disabled');
-                $(this).html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
+            $('#formContact').submit(function(e) {
+                //e.preventDefault();
+                $('#btnContact').addClass('disabled');
+                $('#btnContact').html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
             });
         });
     </script>
