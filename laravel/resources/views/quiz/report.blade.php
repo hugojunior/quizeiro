@@ -172,9 +172,9 @@ $(function() {
                 type: 'line',
                 data: {!! json_encode($dataGraphVisits) !!},
                 backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                pointBorderColor: '#007bff',
-                pointBackgroundColor: '#007bff',
+                borderColor: '#423056',
+                pointBorderColor: '#423056',
+                pointBackgroundColor: '#423056',
                 fill: false
             }, {
                 type: 'line',
