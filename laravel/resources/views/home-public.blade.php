@@ -14,7 +14,7 @@
     <meta property="og:description" content="Quizeiro é uma plataforma gratuita que permite que os usuários criem seus próprios quizzes personalizados e os compartilhem com amigos." />
     <meta property="og:url" content="https://quizeiro.games/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://quizeiro.games/images/logo-400x400-silver.png">
+    <meta property="og:image" content="https://quizeiro.games/images/banner-social.png">
     <meta name="keywords" content="quiz,quizeiro,quizdev,quiz online,gratis,personalizado,aprender,estudar,jogar,projeto,uni7,faculdade" />
     <meta name="author" content="Hugo Júnior" />
     <title>Quizeiro - Crie Quizzes Personalizados Gratuitamente</title>
@@ -33,6 +33,62 @@
 
     gtag('config', 'G-ERL5WHWKZ8');
     </script>
+    <style>
+        #home {
+            background-image: url('/images/bg-banner-home.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        h1 {
+            color: #292737;
+            text-shadow: 1px 1px 1px #fff;
+        }
+        footer.bg-dark {
+            background-color: #292737 !important;
+        }
+        .btn-primary {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #423056;
+            --bs-btn-border-color: #423056;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #292737;
+            --bs-btn-hover-border-color: #2b2337;
+            --bs-btn-focus-shadow-rgb: 49,132,253;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #2b2337;
+            --bs-btn-active-border-color: #25212c;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #fff;
+            --bs-btn-disabled-bg: #423056;
+            --bs-btn-disabled-border-color: #423056;
+        }
+        .btn-outline-primary {
+            --bs-btn-color: #423056;
+            --bs-btn-border-color: #423056;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #423056;
+            --bs-btn-hover-border-color: #423056;
+            --bs-btn-focus-shadow-rgb: 13,110,253;
+            --bs-btn-active-color: #fff;
+            --bs-btn-active-bg: #423056;
+            --bs-btn-active-border-color: #423056;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #423056;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: #423056;
+            --bs-gradient: none;
+        }
+        #como-funciona img {
+            border: 3px solid #ccc4e1;
+        }
+        #como-funciona img:hover {
+            border: 3px solid #b9acdb;
+        }
+        .dropdown-item:active {
+            background-color: #423056;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,8 +133,8 @@
                         </ul>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Entrar</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Cadastrar</a>
+                    <a href="{{ route('login') }}" class="btn btn-outline-primary rounded-0 me-2">Entrar</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary rounded-0">Cadastrar</a>
                 @endauth
             </div>
         </header>
@@ -94,7 +150,7 @@
                 <p class="lead text-muted">Quizeiro é uma plataforma gratuita que permite que os usuários criem seus
                     próprios quizzes personalizados e os compartilhem com amigos.</p>
                 <p>
-                    <a href="{{ route('quizzes.index') }}" class="btn btn-primary my-2">Começar agora</a>
+                    <a href="{{ route('quizzes.index') }}" class="btn btn-primary my-2 rounded-0">Começar agora</a>
                 </p>
             </div>
         </div>
@@ -106,37 +162,19 @@
             <h1 class="text-center pb-5 fw-light">Como Funciona</h1>
             <div class="row">
                 <div class="col-lg-4">
-                    <h3 class="fw-light">1. Crie</h3>
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                        preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="43%" y="50%" fill="#eceeef"
-                            dy=".3em">Crie</text>
-                    </svg>
-                    <p class="pt-2">Use nossa ferramenta fácil de usar para criar seu próprio quiz personalizado.</p>
+                    <h3 class="fw-light">1. Cadastre-se</h3>
+                    <img src="/images/banner-cadastro.png" alt="Crie" width="100%">
+                    <p class="pt-2">Cadastre-se agora! É rápido e totalmente gratuito!</p>
                 </div>
                 <div class="col-lg-4">
-                    <h3 class="fw-light">2. Personalize</h3>
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                        preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="38%" y="50%" fill="#eceeef"
-                            dy=".3em">Personalize</text>
-                    </svg>
-                    <p class="pt-2">Adicione perguntas, opções de resposta e personalize a aparência do seu quiz.</p>
+                    <h3 class="fw-light">2. Crie seu Quiz</h3>
+                    <img src="/images/banner-customize.png" alt="Crie" width="100%">
+                    <p class="pt-2">Personalize e crie quizzes com perguntas e respostas!"</p>
                 </div>
                 <div class="col-lg-4">
                     <h3 class="fw-light">3. Compartilhe</h3>
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                        preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="38%" y="50%"
-                            fill="#eceeef" dy=".3em">Compartilhe</text>
-                    </svg>
-                    <p class="pt-2">Compartilhe seu quiz com amigos, familiares ou público em geral.</p>
+                    <img src="/images/banner-share.png" alt="Crie" width="100%">
+                    <p class="pt-2">Compartilhe seu quiz com qualquer pessoa que desejar!</p>
                 </div>
             </div>
         </div>
@@ -145,10 +183,10 @@
     <!-- Criar Quiz -->
     <section id="criar-quiz" class="py-5">
         <div class="container">
-            <h1 class="text-center fw-light">Comece a Criar Seu Quiz</h1>
+            <h1 class="text-center fw-light">Comece a criar o seu quiz</h1>
             <p class="text-center">Crie seu próprio quiz personalizado agora mesmo!</p>
             <div class="text-center">
-                <a href="{{ route('quizzes.index') }}" class="btn btn-primary btn-lg">Criar Quiz</a>
+                <a href="{{ route('quizzes.index') }}" class="btn btn-primary btn-lg rounded-0">Criar Quiz</a>
             </div>
         </div>
     </section>
@@ -162,7 +200,7 @@
                     @forelse ($publicQuizzes as $quiz)
                     <div class="col">
                         <div class="card shadow-sm">
-                            <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" target="_blank"><img src="/images/logo-400x400-silver.png" alt="{{ $quiz->title }}" width="100%"></a>
+                            <a href="{{ route('quizzes.share', [$quiz->user->username, $quiz->slug]) }}" target="_blank"><img src="/images/banner-default-quiz.png" alt="{{ $quiz->title }}" width="100%"></a>
                             <div class="card-body">
                                 <h5>{{ Str::limit($quiz->title, 30) }}</h5>
                                 <p class="card-text">{{ Str::limit($quiz->description, 50) }}</p>
@@ -199,12 +237,12 @@
                     <form method="POST" action="{{ route('contact') }}">
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Seu Nome</label>
+                            <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="Digite seu nome" maxlength="30" required>
                             @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Seu E-mail</label>
+                            <label for="email" class="form-label">E-mail</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="Digite seu e-mail" maxlength="30" required>
                             @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
@@ -213,7 +251,7 @@
                             <textarea class="form-control @error('message') is-invalid @enderror" name="message" id="message" rows="5" placeholder="Digite sua mensagem" required>{{ old('message') }}</textarea>
                             @error('message') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
-                        <button type="submit" id="btnContact" class="btn btn-primary">Enviar Mensagem</button>
+                        <button type="submit" id="btnContact" class="btn btn-primary rounded-0">Enviar Mensagem</button>
                     </form>
                 </div>
             </div>
