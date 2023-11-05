@@ -1,94 +1,47 @@
 {
+    "title": "Quiz sobre Bancos de Dados",
+    "slug": "quiz-bancos-de-dados",
+    "summary": "Teste seus conhecimentos em bancos de dados com este quiz!",
     "questions": [
       {
-        "question": "O que é IA?",
-        "answers": [
-          {"text": "Uma área da informática que se dedica a criar sistemas inteligentes."},
-          {"text": "Um jogo de tabuleiro."},
-          {"text": "Um animal de estimação."},
-          {"text": "Uma linguagem de programação."}
-        ]
+        "question": "O que é um banco de dados?",
+        "answers": ["Um sistema para armazenar e gerenciar dados", "Um tipo de rede de computadores", "Um programa de edição de texto", "Uma linguagem de programação"]
       },
       {
-        "question": "Qual é o objetivo da IA?",
-        "answers": [
-          {"text": "Desenvolver sistemas que podem realizar tarefas inteligentes."},
-          {"text": "Construir robôs gigantes."},
-          {"text": "Fazer previsões meteorológicas."},
-          {"text": "Produzir música clássica."}
-        ]
+        "question": "Qual é a linguagem padrão para consultas em bancos de dados relacionais?",
+        "answers": ["SQL", "Java", "Python", "HTML"]
       },
       {
-        "question": "Quais são as duas categorias principais de IA?",
-        "answers": [
-          {"text": "IA fraca e IA forte."},
-          {"text": "IA amigável e IA hostil."},
-          {"text": "IA pequena e IA grande."},
-          {"text": "IA rápida e IA lenta."}
-        ]
+        "question": "O que é uma chave primária em um banco de dados?",
+        "answers": ["Um campo que identifica exclusivamente cada registro na tabela", "Uma senha para acessar o banco de dados", "Um tipo de índice de pesquisa", "Um tipo de armazenamento em cache"]
       },
       {
-        "question": "O que é aprendizado de máquina?",
-        "answers": [
-          {"text": "Um subcampo da IA que se concentra em sistemas que podem aprender com dados."},
-          {"text": "Um método para ensinar cães novos truques."},
-          {"text": "Um tipo de carro esportivo."},
-          {"text": "Uma língua falada em Marte."}
-        ]
+        "question": "O que é normalização em bancos de dados?",
+        "answers": ["Um processo para organizar dados de forma eficiente e reduzir a redundância", "Uma operação de exclusão de dados", "Uma técnica para adicionar dados aleatórios", "Uma função de criptografia"]
       },
       {
-        "question": "Quais são os benefícios da IA na medicina?",
-        "answers": [
-          {"text": "Melhor diagnóstico e tratamento de doenças."},
-          {"text": "Preparo de refeições gourmet."},
-          {"text": "Manutenção de jardins."},
-          {"text": "Conserto de carros."}
-        ]
+        "question": "Qual é a função do comando 'INSERT' em SQL?",
+        "answers": ["Inserir novos registros em uma tabela", "Atualizar registros em uma tabela", "Excluir registros de uma tabela", "Selecionar registros de uma tabela"]
       },
       {
-        "question": "O que é um chatbot?",
-        "answers": [
-          {"text": "Um programa de computador que pode conversar com pessoas."},
-          {"text": "Um tipo de barco."},
-          {"text": "Um prato de comida típico de algum lugar."},
-          {"text": "Um tipo de robô de combate."}
-        ]
+        "question": "O que é um índice em um banco de dados?",
+        "answers": ["Uma estrutura de dados que melhora a velocidade de recuperação de dados", "Um tipo de campo de texto", "Um tipo de senha", "Um comando SQL para exclusão de registros"]
       },
       {
-        "question": "O que é IA ética?",
-        "answers": [
-          {"text": "Um campo que se preocupa com questões morais na IA."},
-          {"text": "Uma competição de corrida de carros autônomos."},
-          {"text": "Uma nova forma de arte abstrata."},
-          {"text": "Uma categoria de esportes radicais."}
-        ]
+        "question": "Qual é o propósito de um banco de dados NoSQL?",
+        "answers": ["Armazenar dados não relacionais e escaláveis", "Armazenar dados em formato tabular", "Executar operações matemáticas complexas", "Gerar relatórios gráficos"]
       },
       {
-        "question": "O que são redes neurais artificiais?",
-        "answers": [
-          {"text": "Um modelo computacional inspirado no funcionamento do cérebro humano."},
-          {"text": "Uma técnica de pesca com rede."},
-          {"text": "Um tipo de avião de caça."},
-          {"text": "Um instrumento musical de cordas."}
-        ]
+        "question": "O que é a ACID em bancos de dados?",
+        "answers": ["Um conjunto de propriedades de transações: Atomicidade, Consistência, Isolamento e Durabilidade", "Um tipo de linguagem de programação", "Um formato de arquivo de banco de dados", "Uma técnica de compressão de dados"]
       },
       {
-        "question": "Quem é considerado o pai da IA?",
-        "answers": [
-          {"text": "Alan Turing."},
-          {"text": "Steve Jobs."},
-          {"text": "Elon Musk."},
-          {"text": "Albert Einstein."}
-        ]
+        "question": "O que é a linguagem de consulta NoSQL MongoDB usa?",
+        "answers": ["MongoDB Query Language", "SQL", "Python", "JavaScript"]
       },
       {
-        "question": "O que é Aprendizado Profundo (Deep Learning)?",
-        "answers": [
-          {"text": "Um subcampo de IA que se concentra em redes neurais profundas."},
-          {"text": "Um tipo de mergulho submarino."},
-          {"text": "Um estilo de música pesada."},
-          {"text": "Uma técnica de jardinagem profissional."}
-        ]
+        "question": "Qual é a diferença entre um banco de dados relacional e um banco de dados NoSQL?",
+        "answers": ["Um armazena dados em tabelas relacionais, o outro não", "Ambos armazenam dados da mesma maneira", "Um é mais caro que o outro", "Ambos usam a linguagem SQL"]
       }
     ]
-}
+  }

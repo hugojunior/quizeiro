@@ -44,6 +44,24 @@ class QuizController extends Controller
 
         $gptJson = json_decode($request->gptJson);
 
+        if (!isset($gptJson->title)) {
+            return redirect()
+                ->route('quizzes.import')
+                ->with('error', 'Não foi possível localizar o Título do Quiz (title) no seu JSON!');
+        }
+
+        if (!isset($gptJson->slug)) {
+            return redirect()
+                ->route('quizzes.import')
+                ->with('error', 'Não foi possível localizar o Identificador do Quiz (slug) no seu JSON!');
+        }
+
+        if (!isset($gptJson->summary)) {
+            return redirect()
+                ->route('quizzes.import')
+                ->with('error', 'Não foi possível localizar a Descrição do Quiz (summary) no seu JSON!');
+        }
+
         foreach($gptJson->questions as $question) {
             if (strlen($question->question) > 100) {
                 return redirect()
@@ -55,11 +73,11 @@ class QuizController extends Controller
             }
 
             foreach($question->answers as $answer) {
-                if (strlen($answer->text) > 100) {
+                if (strlen($answer) > 100) {
                     return redirect()
                         ->route('quizzes.import')
                         ->with([
-                            'error' => 'A resposta não pode ter mais de 100 caracteres: ' . $answer->text,
+                            'error' => 'A resposta não pode ter mais de 100 caracteres: ' . $answer,
                             'gptJson' => $request->gptJson
                         ]);
                 }
@@ -73,16 +91,16 @@ class QuizController extends Controller
         }
 
         $data = [
-            'title' => 'Meu Quiz usando chatGPT',
-            'slug' => 'meu-quiz-usando-chatgpt',
-            'description' => 'Descrição do meu quiz usando chatGPT',
+            'title' => $gptJson->title,
+            'slug' => $gptJson->slug,
+            'description' => $gptJson->summary,
             'is_public' => true
         ];
 
         foreach ($gptJson->questions as $k => $question) {
             $data['question-' . ($k + 1)] = htmlspecialchars_decode($question->question);
             foreach ($question->answers as $j => $answer) {
-                $data['answers-' . ($k + 1) . '-' . ($j + 1)] = htmlspecialchars_decode($answer->text);
+                $data['answers-' . ($k + 1) . '-' . ($j + 1)] = htmlspecialchars_decode($answer);
             }
         }
 

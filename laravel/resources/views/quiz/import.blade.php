@@ -29,9 +29,9 @@
 		<div class="card-body">
 			<p>Essa página tem como finalidade ajudar com a importação de perguntas e respostas via <a href="https://chat.openai.com/" target="_blank">ChatGPT</a> ou qualquer outra ferramenta que gere um arquivo JSON com <strong><a href="/js/exemplo-perguntas.json" target="_blank">esse formato</a>.</strong></p>
             <h5>Utilizando o ChatGPT</h5>
-            <p>Primeiramente, crie uma conta gratuita na plataforma e, no chat, utilize o seguinte prompt, substituindo <strong>'%%assunto%%'</strong> pelo tópico que você deseja abordar em seu Quiz:</p>
+            <p>Primeiramente, crie uma conta gratuita na plataforma e, no chat, utilize o seguinte prompt, substituindo <strong>*|ASSUNTO|*</strong> pelo tópico que você deseja abordar em seu Quiz:</p>
             <blockquote>
-                <p class="font-italic">Crie uma API JSON com 10 perguntas sobre <strong>%%assunto%%</strong> onde cada pergunta deve ter 4 respostas e apenas a primeira opção deve ser correta. As perguntas e respostas devem ter no máximo 100 caracteres cada e o JSON deve seguir o seguinte formato: {"questions":[{"question":"","answers":[{"text":""}]}}</p>
+                <p class="font-italic">Gere uma API JSON com 10 perguntas sobre '<strong>*|ASSUNTO|*</strong>' para um Quiz, onde cada pergunta deve ter 4 respostas e apenas a primeira opção deve ser correta. As perguntas e respostas devem ter no máximo 100 caracteres cada e o JSON deve seguir o seguinte formato: '{"title": string,"slug": string,"summary": string,"questions": [{"question": string,"answers": array}]}'</p>
             </blockquote>
 
             <div class="row">
