@@ -10,6 +10,7 @@ use Auth;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use WhichBrowser\Parser;
 
 class QuizController extends Controller
 {
@@ -177,10 +178,56 @@ class QuizController extends Controller
             ->where('user_id', Auth::user()->id)
             ->firstOrFail();
 
-        $totalVisits = Quiz_access::where('quiz_id', $quiz->id)->count();
+        $browsers = Quiz_access::select('user_agent')
+            ->where('quiz_id', $quizID)
+            ->groupBy('user_agent')
+            ->get()
+            ->pluck('user_agent')
+            ->countBy(function ($userAgent) {
+                $device = new Parser($userAgent);
+                return $device->browser->getName() ?? '';
+            })->filter(function ($value, $key) {
+                return $key !== '';
+            })
+            ->slice(0, 6)
+            ->sortDesc();
+
+        $os = Quiz_access::select('user_agent')
+            ->where('quiz_id', $quizID)
+            ->groupBy('user_agent')
+            ->get()
+            ->pluck('user_agent')
+            ->countBy(function ($userAgent) {
+                $device = new Parser($userAgent);
+                return $device->os->getName() ?? '';
+            })
+            ->filter(function ($value, $key) {
+                return $key !== '';
+            })
+            ->slice(0, 6)
+            ->sortDesc();
+
+        $devices = Quiz_access::select('user_agent')
+            ->where('quiz_id', $quizID)
+            ->groupBy('user_agent')
+            ->get()
+            ->pluck('user_agent')
+            ->countBy(function ($userAgent) {
+                $device = new Parser($userAgent);
+                return $device->device->type ?? '';
+            })
+            ->filter(function ($value, $key) {
+                return $key !== '';
+            })
+            ->slice(0, 6)
+            ->sortDesc();
+
+        $visits = Quiz_access::select('created_at')->where('quiz_id', $quiz->id)->get();
+        $totalVisits = $visits->count();
         $totalUniqueVisits = Quiz_access::select('ip', 'user_agent')->where('quiz_id', $quiz->id)->groupBy('ip', 'user_agent')->get()->count();
-        $refererAccess = Quiz_access::select('referrer', DB::raw('COUNT(*) as total'))->where('quiz_id', $quiz->id)->whereNotNull('referrer')->groupBy('referrer')->limit(10)->get();
-        $totalAnswers = Quiz_user::where('quiz_id', $quiz->id)->count();
+        $refererAccess = Quiz_access::select('referrer', DB::raw('COUNT(*) as total'))->where('quiz_id', $quiz->id)->whereNotNull('referrer')->groupBy('referrer')->limit(5)->get();
+        $answers = Quiz_user::where('quiz_id', $quiz->id)->orderBy('score', 'desc')->get();
+        $totalAnswers = $answers->count();
         $totalSuccessAnswers = Quiz_user::where('quiz_id', $quiz->id)->where('end_type', 'success')->count();
         $successRate = $totalAnswers > 0 ? round(($totalSuccessAnswers / $totalAnswers) * 100, 2) : 0;
         $scores = Quiz_user::select(['created_at','name', 'score'])
@@ -193,6 +240,32 @@ class QuizController extends Controller
         $dataGraphVisits = [];
         $dataGraphAnswers = [];
         $dataGraphDates = [];
+        $dataGraphHours = [
+            '0-4' => 0,
+            '4-8' => 0,
+            '8-12' => 0,
+            '12-16' => 0,
+            '16-20' => 0,
+            '20-24' => 0
+        ];
+
+        foreach($visits as $visit) {
+            $hour = Carbon::createFromFormat('Y-m-d H:i:s', $visit->created_at)->hour;
+            if ($hour >= 0 && $hour < 4) {
+                $dataGraphHours['0-4']++;
+            } elseif ($hour >= 4 && $hour < 8) {
+                $dataGraphHours['4-8']++;
+            } elseif ($hour >= 8 && $hour < 12) {
+                $dataGraphHours['8-12']++;
+            } elseif ($hour >= 12 && $hour < 16) {
+                $dataGraphHours['12-16']++;
+            } elseif ($hour >= 16 && $hour < 20) {
+                $dataGraphHours['16-20']++;
+            } elseif ($hour >= 20 && $hour < 24) {
+                $dataGraphHours['20-24']++;
+            }
+        }
+        $dataGraphHours = collect($dataGraphHours);
 
         foreach($lastDays as $day) {
             $dataGraphVisits[] = Quiz_access::where('quiz_id', $quiz->id)->whereDate('created_at', $day)->count();
@@ -210,8 +283,47 @@ class QuizController extends Controller
             'refererAccess',
             'dataGraphVisits',
             'dataGraphAnswers',
-            'dataGraphDates'
+            'dataGraphDates',
+            'dataGraphHours',
+            'devices',
+            'browsers',
+            'os',
+            'answers'
         ));
+    }
+
+    public function reportAnswer($quizID, $answerID)
+    {
+        $quiz = Quiz::where('id', $quizID)
+            ->where('user_id', Auth::user()->id)
+            ->firstOrFail();
+
+        $answer = Quiz_user::where('quiz_id', $quizID)
+            ->where('id', $answerID)
+            ->firstOrFail();
+
+        $position = is_null($answer->score) ? "" : "#" . Quiz_user::where('quiz_id', $quizID)
+            ->where('score', '>', $answer->score)
+            ->count() + 1;
+
+        return view('quiz.report-answer', compact('quiz', 'answer', 'position'));
+    }
+
+    public function reportAnswerDestroy($quizID, $answerID)
+    {
+        $quiz = Quiz::where('id', $quizID)
+            ->where('user_id', Auth::user()->id)
+            ->firstOrFail();
+
+        $answer = Quiz_user::where('quiz_id', $quizID)
+            ->where('id', $answerID)
+            ->firstOrFail();
+
+        $answer->delete();
+
+        return redirect()
+            ->route('quizzes.report', $quiz->id)
+            ->with('success', 'A resposta foi excluída com sucesso!');
     }
 
     public function share($username, $quizSlug)

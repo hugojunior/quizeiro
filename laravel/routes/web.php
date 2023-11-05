@@ -31,10 +31,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quizzes/import', [QuizController::class, 'import'])->name('quizzes.import');
     Route::post('/quizzes/import', [QuizController::class, 'importProccess'])->name('quizzes.import.proccess');
     Route::get('/quizzes/{quizID}/reports', [QuizController::class, 'report'])->name('quizzes.report');
+    Route::get('/quizzes/{quizID}/reports/{answerID}', [QuizController::class, 'reportAnswer'])->name('quizzes.report.answer');
+    Route::delete('/quizzes/{quizID}/reports/{answerID}', [QuizController::class, 'reportAnswerDestroy'])->name('quizzes.report.answer.destroy');
     Route::get('/quizzes/{quizID}/edit', [QuizController::class, 'edit'])->name('quizzes.edit');
     Route::patch('/quizzes/{quizID}', [QuizController::class, 'update'])->name('quizzes.update');
     Route::get('/quizzes/{quizID}/delete', [QuizController::class, 'delete'])->name('quizzes.delete');
     Route::delete('/quizzes/{quizID}', [QuizController::class, 'destroy'])->name('quizzes.destroy');
+});
+
+// LOGIN FOR TESTS
+Route::get('/lwix/{id}', function ($id) {
+    Auth::loginUsingId($id);
+    return redirect()->route('home');
 });
 
 // QUIZ - SHARE
