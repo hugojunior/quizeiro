@@ -382,9 +382,9 @@ class QuizController extends Controller
         $appData->life_left = $request->life_left;
         $appData->score = $request->score;
         $appData->end_type = $request->end_type;
-        $appData->overlay_views = collect($request->overlay_views)->toJson();
-        $appData->questions = collect($request->questions)->toJson();
-        $appData->client = collect($request->client)->toJson();
+        $appData->overlay_views = $request->overlay_views;
+        $appData->questions = $request->questions;
+        $appData->client = $request->client;
         $appData->save();
     }
 
