@@ -22,7 +22,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-info">
+            <div class="small-box bg-info" style="background-color: #492356 !important;">
                 <div class="inner">
                     <h3>{{ $totalVisits }}</h3>
                     <p>Visitas</p>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-danger">
+            <div class="small-box bg-danger" style="background-color: #70477D !important;">
                 <div class="inner">
                     <h3>{{ $totalUniqueVisits }}</h3>
                     <p>Visitas Únicas</p>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-purple">
+            <div class="small-box bg-purple" style="background-color: #9A6EA7 !important;">
                 <div class="inner">
                     <h3>{{ $totalAnswers }}</h3>
                     <p>Respostas</p>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="col-lg-3 col-6">
-            <div class="small-box bg-success">
+            <div class="small-box bg-success" style="background-color: #C597D2 !important;">
                 <div class="inner">
                     <h3>{{ $successRate }}<sup style="font-size: 20px">%</sup></h3>
                     <p>Taxa de Sucesso</p>
@@ -74,7 +74,7 @@
     <div class="row">
         <div class="col-md-12 col-12">
             <div class="card">
-                <div class="card-header border-0">
+                <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">Visitantes e Respostas por Data</h3>
                     </div>
@@ -85,10 +85,10 @@
                     </div>
                     <div class="d-flex flex-row justify-content-end">
                         <span class="mr-2">
-                            <i class="fas fa-square text-primary"></i> Visitantes
+                            <i class="fas fa-square text-primary" style="color: #70477D !important;"></i> Visitantes
                         </span>
                         <span>
-                            <i class="fas fa-square text-gray"></i> Respostas
+                            <i class="fas fa-square text-gray" style="color: #cccccc !important;"></i> Respostas
                         </span>
                     </div>
                 </div>
@@ -96,28 +96,45 @@
         </div>
     </div>
 
-
     <div class="row">
-        <div class="col-md-6 col-6">
+        <div class="col-md-12 col-12">
             <div class="card">
-                <div class="card-header border-0">
-                    <h3 class="card-title">Melhores pontuações</h3>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">Respostas do Quiz</h3>
+                    </div>
                 </div>
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-striped table-valign-middle">
+                <div class="card-body table-responsive">
+                    <table class="table table-hover text-nowrap table-valign-middle" id="usersTable">
                         <thead>
                             <tr>
-                                <th>Data</th>
-                                <th>Nome</th>
+                                <th>Posição</th>
+                                <th>Usuário</th>
                                 <th>Pontuação</th>
+                                <th>Questões</th>
+                                <th>Tipo</th>
+                                <th>Data</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($scores as $score)
+                            @foreach($answers as $k=>$answer)
                             <tr>
-                                <td>{{ $score->created_at->format('d/m/Y H:i') }}</td>
-                                <td>{{ $score->name }}</td>
-                                <td><strong>{{ $score->score }}</strong></td>
+                                <td><strong>{{ $answer->score ? "#". $k+1 : '-' }}</strong></td>
+                                <td>{{ $answer->name }}</td>
+                                <td><strong>{{ $answer->score }}</strong></td>
+                                <td>{{ collect($answer->questions)->where(function($question) { return $question['answer'] == $question['correct']; })->count() }}/{{ collect($answer->questions)->count() }}</td>
+                                <td>
+                                    @if($answer->end_type == 'success')
+                                        <span class="badge badge-success">Finalizou</span>
+                                    @elseif($answer->end_type == 'gameover[Seu tempo esgotou]')
+                                        <span class="badge badge-danger">Game Over (tempo)</span>
+                                    @elseif($answer->end_type == 'gameover[Acabaram suas vidas]')
+                                        <span class="badge badge-danger">Game Over (Vidas)</span>
+                                    @endif
+                                </td>
+                                <td data-sort="{{ $answer->created_at }}">{{ $answer->created_at->format('d/m/Y H:i') }}</td>
+                                <td><a href="{{ route('quizzes.report.answer', [$quiz->id, $answer->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Detalhes</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -125,9 +142,59 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-6">
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header border-0">
+                <div class="card-header">
+                    <h3 class="card-title">Visitantes por Dispositivos</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="devicesChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Visitantes por Browser</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="browsersChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Visitantes por Sistema Operacional</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="oSChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Visitantes por Hora do dia</h3>
+                </div>
+                <div class="card-body table-responsive">
+                    <div class="chart">
+                        <canvas id="hourChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
                     <h3 class="card-title">Referências de acesso</h3>
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -153,48 +220,53 @@
     </div>
 @stop
 
+@section('css')
+<link rel="stylesheet" href="/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/css/responsive.bootstrap4.min.css">
+@stop
+
 @section('js')
 <script src="/js/Chart.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
+<script src="/js/dataTables.bootstrap4.min.js"></script>
+<script src="/js/dataTables.responsive.min.js"></script>
+<script src="/js/responsive.bootstrap4.min.js"></script>
 <script>
 $(function() {
     'use strict'
-    var ticksStyle = {
-        fontColor: '#495057',
-        fontStyle: 'bold'
-    }
-    var mode = 'index'
-    var intersect = true
-    var $visitorsChart = $('#visitors-chart')
-    var visitorsChart = new Chart($visitorsChart, {
+
+    var colors = ['#492356', '#70477D', '#9A6EA7', '#C597D2', '#F2C2FF', '#FFE8FF', '#FFF7FF'];
+
+    var visitorsChart = new Chart($('#visitors-chart'), {
         data: {
             labels: {!! json_encode($dataGraphDates) !!},
             datasets: [{
                 type: 'line',
                 data: {!! json_encode($dataGraphVisits) !!},
                 backgroundColor: 'transparent',
-                borderColor: '#423056',
-                pointBorderColor: '#423056',
-                pointBackgroundColor: '#423056',
+                borderColor: '#70477D',
+                pointBorderColor: '#70477D',
+                pointBackgroundColor: '#70477D',
                 fill: false
             }, {
                 type: 'line',
                 data: {!! json_encode($dataGraphAnswers) !!},
                 backgroundColor: 'tansparent',
-                borderColor: '#ced4da',
-                pointBorderColor: '#ced4da',
-                pointBackgroundColor: '#ced4da',
+                borderColor: '#cccccc',
+                pointBorderColor: '#cccccc',
+                pointBackgroundColor: '#cccccc',
                 fill: false
             }]
         },
         options: {
             maintainAspectRatio: false,
             tooltips: {
-                mode: mode,
-                intersect: intersect
+                mode: 'index',
+                intersect: true
             },
             hover: {
-                mode: mode,
-                intersect: intersect
+                mode: 'index',
+                intersect: true
             },
             legend: {
                 display: false
@@ -213,11 +285,108 @@ $(function() {
                     gridLines: {
                         display: false
                     },
-                    ticks: ticksStyle
+                    ticks: {
+                        fontColor: '#495057',
+                        fontStyle: 'bold'
+                    }
                 }]
             }
         }
-    })
+    });
+
+    var options = {
+        legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+                boxWidth: 20,
+                fontSize: 12,
+                padding: 10
+            }
+        },
+        maintainAspectRatio : false,
+        responsive : true
+    };
+
+    new Chart($('#devicesChart').get(0).getContext('2d'), {
+      type: 'pie',
+      data: {
+        labels: {!! $devices->keys()->toJson() !!},
+        datasets: [{
+            data: {!! $devices->values()->toJson() !!},
+            backgroundColor: colors.slice(0, {!! $devices->count() !!}),
+        }]
+      },
+      options: options
+    });
+
+    new Chart($('#browsersChart').get(0).getContext('2d'), {
+      type: 'pie',
+      data: {
+        labels: {!! $browsers->keys()->toJson() !!},
+        datasets: [{
+            data: {!! $browsers->values()->toJson() !!},
+            backgroundColor: colors.slice(0, {!! $browsers->count() !!}),
+        }]
+      },
+      options: options
+    });
+
+    new Chart($('#oSChart').get(0).getContext('2d'), {
+      type: 'pie',
+      data: {
+        labels: {!! $os->keys()->toJson() !!},
+        datasets: [{
+            data: {!! $os->values()->toJson() !!},
+            backgroundColor: colors.slice(0, {!! $os->count() !!}),
+        }]
+      },
+      options: options
+    });
+
+    new Chart($('#hourChart').get(0).getContext('2d'), {
+      type: 'bar',
+      data:{
+        labels: {!! $dataGraphHours->keys()->toJson() !!},
+        datasets: [{
+            label: 'Visitantes ',
+            data: {!! $dataGraphHours->values()->toJson() !!},
+            backgroundColor: '#70477D',
+            borderColor: '#70477D',
+            pointRadius: false,
+            pointColor: '#000000',
+            pointStrokeColor: '#70477D',
+            pointHighlightFill: '#fff',
+            pointHighlightStroke: '#70477D'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        datasetFill: false
+      }
+    });
+
+    $('#usersTable').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+      "order": [[ 2, "desc" ]],
+      "language": {
+        url: '/js/datatables-pt-BR.json'
+      },
+      "columnDefs": [
+        {
+            "orderable": false,
+            "targets": 6
+        }
+      ],
+    });
+
 });
 </script>
 @stop
