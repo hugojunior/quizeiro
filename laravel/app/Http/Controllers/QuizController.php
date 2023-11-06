@@ -243,7 +243,7 @@ class QuizController extends Controller
         $visits = Quiz_access::select('created_at')->where('quiz_id', $quiz->id)->get();
         $totalVisits = $visits->count();
         $totalUniqueVisits = Quiz_access::select('ip', 'user_agent')->where('quiz_id', $quiz->id)->groupBy('ip', 'user_agent')->get()->count();
-        $refererAccess = Quiz_access::select('referrer', DB::raw('COUNT(*) as total'))->where('quiz_id', $quiz->id)->whereNotNull('referrer')->groupBy('referrer')->limit(5)->get();
+        $refererAccess = Quiz_access::select('referrer', DB::raw('COUNT(*) as total'))->where('quiz_id', $quiz->id)->whereNotNull('referrer')->groupBy('referrer')->limit(5)->orderBy('total', 'desc')->get();
         $answers = Quiz_user::where('quiz_id', $quiz->id)->orderBy('score', 'desc')->get();
         $totalAnswers = $answers->count();
         $totalSuccessAnswers = Quiz_user::where('quiz_id', $quiz->id)->where('end_type', 'success')->count();
