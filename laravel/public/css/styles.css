@@ -94,7 +94,7 @@ canvas {
 }
 
 #container p {
-    padding: 0;
+    padding: 0 !important;
 }
 
 #container h1 a {
@@ -164,11 +164,12 @@ canvas {
 
 #boxBriefing .boxBriefingContainer h3 {
   font-size: 18px;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #boxBriefing .boxBriefingContainer h3.h3-m {
-    margin: 15px 0 5px 0;
+    margin: 15px 0 5px 0 !important;
 }
 
 #boxBriefing .boxBriefingContainer p,
