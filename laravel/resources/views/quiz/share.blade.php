@@ -722,6 +722,8 @@
                 mode: Phaser.Scale.FIT,
                 parent: "game",
                 autoCenter: Phaser.Scale.CENTER_BOTH,
+                width: 800,
+                height: 429,
             },
             physics: {
                 default: "arcade",
