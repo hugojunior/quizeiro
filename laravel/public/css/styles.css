@@ -80,8 +80,8 @@ canvas {
 #container {
   margin: 0 auto;
   display: block;
-  width: 800px;
-  padding: 20px 0;
+  max-width: 800px;
+  padding: 20px;
 }
 
 #container hr {
