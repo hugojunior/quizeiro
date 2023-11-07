@@ -188,6 +188,10 @@
                 this.load.image("boxName", "/images/box-name.png");
                 this.load.image("boxTime", "/images/box-time.png");
                 this.load.image("logoGame156x66", "/images/logo-game-156x66.png");
+                this.load.image("loadImg1", "/images/prof-marum-bw.png");
+                this.load.image("loadImg2", "/images/prof-regis.png");
+                this.load.image("loadImg3", "/images/prof-marcelo.png");
+                this.load.image("loadImg4", "/images/rafael.png");
                 this.loadLifeImages();
                 if (this.isDay()) {
                     this.load.image("backgroundGame", "/images/bg-scene-game-day.png");
