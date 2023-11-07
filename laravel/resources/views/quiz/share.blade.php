@@ -179,6 +179,8 @@
                 this.load.html("gameFinished", "/html/scenes/game/finished.html");
                 this.load.html("gameHelp", "/html/scenes/game/help.html");
                 this.load.html("gameInfo", "/html/scenes/game/info.html");
+                this.load.html("gameInfo2", "/html/scenes/game/info2.html");
+                this.load.html("gameInfo3", "/html/scenes/game/info3.html");
                 this.load.html("gameScore", "/html/scenes/game/score.html");
                 this.load.html("gameEe1", "/html/scenes/game/ee1.html");
                 this.load.image("personBike60x79", "/images/person-bike-60x79.png");
@@ -621,6 +623,36 @@
                     this.infoBox = false;
                 }
             },
+            showInfo2() {
+                if (!this.infoBox) {
+                    this.appData.overlay_views.push("info2");
+                    this.infoBox = this.add
+                        .dom(400, 208)
+                        .setInteractive()
+                        .createFromCache("gameInfo2");
+                    document.querySelector("#closeInfo").addEventListener("click", () => {
+                        this.showInfo();
+                    });
+                } else {
+                    this.infoBox.destroy();
+                    this.infoBox = false;
+                }
+            },
+            showInfo3() {
+                if (!this.infoBox) {
+                    this.appData.overlay_views.push("info3");
+                    this.infoBox = this.add
+                        .dom(400, 208)
+                        .setInteractive()
+                        .createFromCache("gameInfo3");
+                    document.querySelector("#closeInfo").addEventListener("click", () => {
+                        this.showInfo();
+                    });
+                } else {
+                    this.infoBox.destroy();
+                    this.infoBox = false;
+                }
+            },
             showCredits() {
                 if (this.gameFinished) {
                     if (!this.ee1) {
@@ -697,6 +729,12 @@
                         }
                         if (code === 73) {
                             this.showInfo();
+                        }
+                        if (code === 79) {
+                            this.showInfo2();
+                        }
+                        if (code === 82) {
+                            this.showInfo3();
                         }
                         if (code === 67) {
                             this.showCredits();
