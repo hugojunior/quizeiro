@@ -247,7 +247,8 @@ $(function() {
                 borderColor: '#70477D',
                 pointBorderColor: '#70477D',
                 pointBackgroundColor: '#70477D',
-                fill: false
+                fill: false,
+                tension: 0
             }, {
                 type: 'line',
                 data: {!! json_encode($dataGraphAnswers) !!},
@@ -255,7 +256,8 @@ $(function() {
                 borderColor: '#cccccc',
                 pointBorderColor: '#cccccc',
                 pointBackgroundColor: '#cccccc',
-                fill: false
+                fill: false,
+                tension: 0
             }]
         },
         options: {
@@ -274,16 +276,13 @@ $(function() {
             scales: {
                 yAxes: [{
                     gridLines: {
-                        display: true,
-                        lineWidth: '4px',
-                        color: 'rgba(0, 0, 0, .2)',
-                        zeroLineColor: 'transparent'
+                        display: true
                     }
                 }],
                 xAxes: [{
                     display: true,
                     gridLines: {
-                        display: false
+                        display: true
                     },
                     ticks: {
                         fontColor: '#495057',

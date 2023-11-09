@@ -28,11 +28,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Dados do Usuário
+                        Dados da Resposta
                     </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-striped table-valign-middle">
                             <tbody>
+                                <tr>
+                                    <td><strong>Quiz</strong></td>
+                                    <td>{{ $quiz->title }}</td>
+                                </tr>
                                 <tr>
                                     <td><strong>Nome</strong></td>
                                     <td>{{ $answer->name }}</td>

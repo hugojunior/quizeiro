@@ -20,7 +20,7 @@ class HomeController extends Controller
             ->where('date_start', '<=', date('Y-m-d H:i:s'))
             ->where('date_end', '>=', date('Y-m-d H:i:s'))
             ->orderBy('created_at', 'desc')
-            ->limit(8)
+            ->limit(6)
             ->get();
 
         return view('home-public', compact('publicQuizzes'));
