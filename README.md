@@ -14,7 +14,7 @@ O **Quizeiro** é uma plataforma revolucionária que leva a criação de quizzes
 
 | Descrição     | Usuário que deseja criar e compartilhar um quiz personalizado e divertido." |
 | ------------- | --------------------------------------------------------------------------- |
-| Papel         | Gerar dados e acompanhar o progresso dos participantes;                     |
+| Papel         | Gerar dados e acompanhar o progresso dos participantes.                     |
 | Representante | Hugo Júnior                                                                 |
 
 ## 4. PERSONAS
