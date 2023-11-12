@@ -789,7 +789,9 @@
 <body onselectstart="return false">
 	<div id="container">
 		<div id="game"></div>
-		<h1>{{ $quiz->title }}</h1>
+		<h1 class="share-title">{{ $quiz->title }}</h1>
+		<div class="author"><ion-icon name="person-outline"></ion-icon> Criado por <a
+				href="{{ route('quizzes.profile', $quiz->user->username) }}">{{ $quiz->user->name }}</a></div>
 		<div class="text-desc">{!! nl2br($quiz->description) !!}</div>
 		<h3>Compartilhe:</h3>
 		<div class="share">

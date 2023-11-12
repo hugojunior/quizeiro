@@ -69,6 +69,7 @@ button {
   text-align: center;
   margin-top: 20px;
   color: #edeeea;
+  line-height: 20px;
 }
 
 canvas {
@@ -537,4 +538,54 @@ canvas {
 .share {
     font-size: 30px;
     text-decoration: none;
+}
+
+.author {
+    margin: 0 0 30px 0;
+    font-size: 14px;
+}
+
+.author a {
+    text-decoration: none;
+    color: #fab40a;
+}
+
+.author img {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+h1.share-title {
+    margin-bottom: 10px;
+}
+
+.profile {
+    line-height: 20px;
+}
+
+.profile img {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 10px solid #25212c;
+}
+
+.profile h1.share-title {
+    text-align: center;
+    font-size: 32px !important;
+}
+
+.profile h1 span {
+    display: block;
+    font-size: 14px;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+.profile a {
+    text-decoration: none;
+    color: #fab40a;
 }

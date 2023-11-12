@@ -369,6 +369,17 @@ class QuizController extends Controller
         return view('quiz.share', compact('quiz', 'questions'));
     }
 
+    public function profile($username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $quizzes = Quiz::where('user_id', $user->id)
+            ->where('is_public', true)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('quiz.profile', compact('user', 'quizzes'));
+    }
+
     public function score($quizID)
     {
         $quiz = Quiz::where('id', $quizID)
