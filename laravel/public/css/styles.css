@@ -8,6 +8,12 @@ body {
   font-family: "Courier Prime", "Courier New", Courier, monospace;
 }
 
+::selection {
+    background-color: #fab40a;
+    color: #292737;
+    text-shadow: none;
+}
+
 h1 {
   font-size: 20px;
 }
@@ -562,6 +568,7 @@ h1.share-title {
 
 .profile {
     line-height: 20px;
+    text-shadow: 2px 1px #292737;
 }
 
 .profile img {
@@ -570,7 +577,8 @@ h1.share-title {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 10px solid #25212c;
+    border: 10px solid rgb(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 1px #fab40a;
 }
 
 .profile h1.share-title {
@@ -587,5 +595,22 @@ h1.share-title {
 
 .profile a {
     text-decoration: none;
+    color: #fab40a;
+}
+
+.scheduled,
+.archived {
+    padding: 50px 0;
+    text-align: center;
+    text-shadow: 2px 1px #292737;
+}
+
+.scheduled .ic,
+.archived .ic  {
+    font-size: 80px;
+}
+
+.scheduled h3,
+.archived h3 span {
     color: #fab40a;
 }

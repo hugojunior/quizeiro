@@ -349,24 +349,28 @@ class QuizController extends Controller
         $user = User::where('username', $username)->firstOrFail();
         $quiz = Quiz::where('slug', $quizSlug)
             ->where('user_id', $user->id)
-            ->where('date_start', '<=', date('Y-m-d H:i:s'))
-            ->where('date_end', '>=', date('Y-m-d H:i:s'))
             ->firstOrFail();
-
-        $questions = collect($quiz->questions)->shuffle()->map(function ($item) {
-            return [
-                'pergunta' => $item['question'],
-                'correta' => $item['answers'][0],
-                'tema' => 'Geral',
-                'opcoes' => collect($item['answers'])->shuffle()->map(function ($item) {
-                    return $item;
-                })->toArray()
-            ];
-        })->toJson();
 
         $this->saveVisit($quiz->id);
 
-        return view('quiz.share', compact('quiz', 'questions'));
+        if ($quiz->date_start > date('Y-m-d H:i:s')) {
+            return view('quiz.scheduled', compact('quiz'));
+        } elseif($quiz->date_end < date('Y-m-d H:i:s')) {
+            return view('quiz.archived', compact('quiz'));
+        } else {
+            $questions = collect($quiz->questions)->shuffle()->map(function ($item) {
+                return [
+                    'pergunta' => $item['question'],
+                    'correta' => $item['answers'][0],
+                    'tema' => 'Geral',
+                    'opcoes' => collect($item['answers'])->shuffle()->map(function ($item) {
+                        return $item;
+                    })->toArray()
+                ];
+            })->toJson();
+
+            return view('quiz.share', compact('quiz', 'questions'));
+        }
     }
 
     public function profile($username)
@@ -375,9 +379,8 @@ class QuizController extends Controller
         $quizzes = Quiz::where('user_id', $user->id)
             ->where('is_public', true)
             ->where('user_id', $user->id)
-            ->where('date_start', '<=', date('Y-m-d H:i:s'))
             ->where('date_end', '>=', date('Y-m-d H:i:s'))
-            ->orderBy('created_at', 'desc')
+            ->orderBy('date_start', 'desc')
             ->get();
 
         return view('quiz.profile', compact('user', 'quizzes'));
