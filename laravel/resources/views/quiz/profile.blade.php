@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +26,6 @@
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ERL5WHWKZ8"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
-
 		function gtag() {
 			dataLayer.push(arguments);
 		}
@@ -35,15 +33,20 @@
 		gtag('config', 'G-ERL5WHWKZ8');
 	</script>
 </head>
-
 <body>
 	<div id="container" class="profile">
         <img src="{{ Gravatar::get($user->email, ['size'=>200]) }}" alt="{{ $user->name }} em Gravatar">
 		<h1 class="share-title">{{ $user->name }} <span>({{ $user->username }})</span></h1>
-        <h3>Meus Quizzes</h3>
+        <h3>Quizzes criados</h3>
         <hr>
         @forelse($quizzes as $quiz)
-            <div><ion-icon name="calendar-outline"></ion-icon> {{ $quiz->created_at->format('d/m/Y') }} - <a href="{{ route('quizzes.share', [$user->username, $quiz->slug]) }}">{{ $quiz->title }}</a></div>
+            <div>
+                @if($quiz->date_start > date('Y-m-d H:i:s'))
+                    <ion-icon name="time-outline"></ion-icon> {{ $quiz->date_start->format('d/m/Y \à\s H:i') }} - <a href="{{ route('quizzes.share', [$user->username, $quiz->slug]) }}">{{ $quiz->title }}</a> <small>(agendado)</small>
+                @else
+                    <ion-icon name="checkmark-circle-outline"></ion-icon> {{ $quiz->date_start->format('d/m/Y \à\s H:i') }} - <a href="{{ route('quizzes.share', [$user->username, $quiz->slug]) }}">{{ $quiz->title }}</a>
+                @endif
+            </div>
         @empty
             <p style="text-align: center;margin: 40px 0;">O usuário ainda não possuí quizzes públicos</p>
         @endforelse
@@ -57,5 +60,4 @@
 		<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-
 </html>

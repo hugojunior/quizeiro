@@ -29,6 +29,7 @@
                     <th>Acessos</th>
                     <th>Respostas</th>
                     <th>Status</th>
+                    <th>Visibilidade</th>
                     <th>Criação</th>
                     <th></th>
                 </tr>
@@ -47,6 +48,13 @@
                             <span class="badge badge-warning">Arquivado</span>
                         @else
                             <span class="badge badge-success">Publicado</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if($quiz->is_public)
+                            <span class="text-success"><i class="fas fa-lock-open"></i> Público</span>
+                        @else
+                            <span class="text-danger"><i class="fas fa-lock"></i> Privado</span>
                         @endif
                     </td>
                     <td>{{ $quiz->created_at->format('d/m/Y H:s') }}</td>

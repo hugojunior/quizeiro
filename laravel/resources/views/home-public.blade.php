@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,13 +26,17 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ERL5WHWKZ8"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-ERL5WHWKZ8');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ERL5WHWKZ8');
     </script>
     <style>
+        ::selection{
+            background-color: #423056;
+            color: #ffffff;
+            text-shadow: none;
+        }
         #home {
             background-image: url('/images/bg-banner-home.png');
             background-position: center;
@@ -90,9 +93,7 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="container">
         <header
             class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
@@ -281,5 +282,4 @@
         });
     </script>
 </body>
-
 </html>
