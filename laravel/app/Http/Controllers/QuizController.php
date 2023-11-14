@@ -414,7 +414,7 @@ class QuizController extends Controller
             ->limit(6)
             ->get();
 
-        return view('quiz.rank', compact('quiz', 'quiz_users'));
+        return view('quiz.rank', compact('user', 'quiz', 'quiz_users'));
     }
 
     public function scoreStore($quizID, Request $request)
