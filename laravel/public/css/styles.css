@@ -85,6 +85,7 @@ canvas {
 }
 
 #container {
+  position: relative;
   margin: 0 auto;
   display: block;
   max-width: 800px;
@@ -749,4 +750,21 @@ h1.share-title {
 .rank ol li:nth-child(10) {
     font-size: 20px;
     color: #ffffff;
+}
+
+.qr-code {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.qr-code img {
+    width: 300px;
+    border: 5px solid #ffffff;
+}
+
+@media (max-width: 1280px) {
+    .qr-code img {
+        display: none !important;
+    }
 }

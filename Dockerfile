@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     nodejs \
-    npm
+    npm \
+    build-essential \
+    libmagickwand-dev
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -29,6 +31,10 @@ COPY --from=composer/composer /usr/bin/composer /usr/bin/composer
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
+
+# Install imagick
+RUN pecl install imagick \
+    && docker-php-ext-enable imagick
 
 # Install redis
 RUN pecl install -o -f redis \
