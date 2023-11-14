@@ -614,3 +614,139 @@ h1.share-title {
 .archived h3 span {
     color: #fab40a;
 }
+
+.rank {
+    text-align: center;
+    text-shadow: 2px 1px #292737;
+}
+
+.rank h1 {
+    font-size: 32px !important;
+    color: #ffffff;
+    text-transform: uppercase;
+    background-color: #fab40a;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin-bottom: 20px
+}
+
+.rank h2 {
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.rank h4 {
+    font-weight:bold;
+    font-size: 14px;
+}
+
+.rank h4 span {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.rank ol {
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    list-style-position: inside;
+    max-width: 350px;
+    counter-reset: my-awesome-counter;
+    list-style: none;
+    padding-left: 40px;
+    margin: 60px auto 40px auto;
+}
+
+.rank ol li {
+    border-bottom: 1px solid rgba(134, 130, 160, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+    counter-increment: my-awesome-counter;
+    position: relative;
+}
+
+.rank ol li:before {
+    content: counter(my-awesome-counter);
+    color: #25212c;
+    font-weight: bold;
+    position: absolute;
+    --size: 60px;
+    left: calc(-1 * var(--size) - 10px);
+    line-height: var(--size);
+    width: var(--size);
+    height: var(--size);
+    top: 0;
+    transform: rotate(-10deg);
+    background-color: #ffffff;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 1px 1px 0 #fff;
+    text-shadow: none;
+}
+
+.rank ol li:nth-child(1):before {
+    background-color: #fab40a;
+    box-shadow: 1px 1px 0 #25212c;
+}
+
+.rank ol li div {
+    font-size: 60%;
+    line-height: 150%;
+    font-weight: normal;
+}
+
+.rank ol li:nth-child(1) {
+    font-size: 48px;
+    color: #fab40a;
+    font-weight: bold;
+}
+
+.rank ol li:nth-child(1) span {
+    font-size: 38px;
+    font-weight: normal;
+}
+
+.rank ol li:nth-child(2) {
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(3) {
+    font-size: 34px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(4) {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(5) {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(6) {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(7) {
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(8) {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(9) {
+    font-size: 22px;
+    color: #ffffff;
+}
+
+.rank ol li:nth-child(10) {
+    font-size: 20px;
+    color: #ffffff;
+}

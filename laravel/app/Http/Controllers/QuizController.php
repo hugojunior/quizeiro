@@ -401,6 +401,22 @@ class QuizController extends Controller
             ->get();
     }
 
+    public function rank($username, $quizSlug, Request $request)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $quiz = Quiz::where('slug', $quizSlug)
+            ->where('user_id', $user->id)
+            ->firstOrFail();
+        $quiz_users = Quiz_user::select(['name', 'score'])
+            ->where('quiz_id', $quiz->id)
+            ->whereNotNull('score')
+            ->orderBy('score', 'desc')
+            ->limit(6)
+            ->get();
+
+        return view('quiz.rank', compact('quiz', 'quiz_users'));
+    }
+
     public function scoreStore($quizID, Request $request)
     {
         $quiz = Quiz::where('id', $quizID)
