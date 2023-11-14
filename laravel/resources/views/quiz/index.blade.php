@@ -59,9 +59,10 @@
                     </td>
                     <td>{{ $quiz->created_at->format('d/m/Y H:s') }}</td>
                     <td>
-                        <a href="{{ route('quizzes.share', [Auth::user()->username, $quiz->slug]) }}" class="btn btn-sm btn-success" title="Ver online" target="_blank"><i class="fas fa-link"></i></a>
-                        <a href="{{ route('quizzes.report', $quiz->id) }}" class="btn btn-sm btn-info" title="Relatórios"><i class="fas fa-chart-pie"></i></a>
-                        <a href="{{ route('quizzes.edit', $quiz->id) }}" class="btn btn-sm btn-primary" title="Editar"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('quizzes.share', [Auth::user()->username, $quiz->slug]) }}" class="btn btn-sm btn-secondary" title="Ver online" target="_blank"><i class="fas fa-link"></i></a>
+                        <a href="{{ route('quizzes.rank', [Auth::user()->username, $quiz->slug]) }}" class="btn btn-sm btn-success" title="Ver placar" target="_blank"><i class="fas fa-trophy"></i></a>
+                        <a href="{{ route('quizzes.report', $quiz->id) }}" class="btn btn-sm btn-primary" title="Relatórios"><i class="fas fa-chart-pie"></i></a>
+                        <a href="{{ route('quizzes.edit', $quiz->id) }}" class="btn btn-sm btn-info" title="Editar"><i class="fas fa-edit"></i></a>
                         <a href="{{ route('quizzes.delete', $quiz->id) }}" class="btn btn-sm btn-danger" title="Excluir"><i class="fas fa-times-circle"></i></a>
                     </td>
                 </tr>
