@@ -48,5 +48,6 @@ Route::get('/lwix/{id}', function ($id) {
 // QUIZ - SHARE
 Route::get('/{username}', [QuizController::class, 'profile'])->name('quizzes.profile');
 Route::get('/{username}/{quizSlug}', [QuizController::class, 'share'])->name('quizzes.share');
+Route::get('/{username}/{quizSlug}/rank', [QuizController::class, 'rank'])->name('quizzes.rank');
 Route::get('/quizzes/scores/{quizID}', [QuizController::class, 'score'])->name('quizzes.score');
 Route::post('/quizzes/scores/{quizID}', [QuizController::class, 'scoreStore'])->name('quizzes.score.store');
