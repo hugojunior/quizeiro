@@ -2,7 +2,7 @@
 Quizeiro é uma plataforma gratuita que permite que os usuários criem seus próprios quizzes personalizados e os compartilhem com amigos.
 
 > [!NOTE]
-> Esse projeto faz parte da disciplina de Estágio Supervisionado II do Curso de Sistemas de Informação na UNI7.
+> Este projeto é parte integrante da disciplina de Estágio II do Curso de Sistemas de Informação na [UNI7](https://www.uni7.edu.br/).
 
 ![Tela do Quiz de SQL](screen.png)
 
