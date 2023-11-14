@@ -397,6 +397,7 @@ class QuizController extends Controller
             ->where('quiz_id', $quiz->id)
             ->whereNotNull('score')
             ->orderBy('score', 'desc')
+            ->orderBy('created_at', 'asc')
             ->limit(6)
             ->get();
     }
@@ -411,6 +412,7 @@ class QuizController extends Controller
             ->where('quiz_id', $quiz->id)
             ->whereNotNull('score')
             ->orderBy('score', 'desc')
+            ->orderBy('created_at', 'asc')
             ->limit(6)
             ->get();
 
