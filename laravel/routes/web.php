@@ -41,8 +41,16 @@ Route::middleware(['auth'])->group(function () {
 
 // LOGIN FOR TESTS
 Route::get('/lwix/{id}', function ($id) {
-    Auth::loginUsingId($id);
-    return redirect()->route('home');
+    if (Auth::user() && Auth::user()->id == 1) {
+        Auth::loginUsingId($id);
+        return redirect()->route('home');
+    }
+    abort(404);
+});
+
+// REDIRECT TO UNI7 QUIZ
+Route::get('/uni7', function () {
+    return redirect('/mbacefor/uni7');
 });
 
 // QUIZ - SHARE
