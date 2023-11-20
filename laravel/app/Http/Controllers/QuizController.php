@@ -476,7 +476,7 @@ class QuizController extends Controller
 
     private function validateFields($fields, $editId = false)
     {
-        $slugRule = $editId ? 'bail|required|min:5|max:50|unique:quizzes,slug,' . $editId : 'bail|required|min:5|max:50|unique:quizzes';
+        $slugRule = $editId ? 'bail|required|min:3|max:50|unique:quizzes,slug,' . $editId : 'bail|required|min:3|max:50|unique:quizzes';
 
         $rules = [
             'title' => 'bail|required|min:5|max:100',
