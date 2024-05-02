@@ -378,7 +378,6 @@ class QuizController extends Controller
         $user = User::where('username', $username)->firstOrFail();
         $quizzes = Quiz::where('user_id', $user->id)
             ->where('is_public', true)
-            ->where('user_id', $user->id)
             ->where('date_end', '>=', date('Y-m-d H:i:s'))
             ->orderBy('date_start', 'desc')
             ->get();
