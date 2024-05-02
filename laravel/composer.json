@@ -9,7 +9,7 @@
         "bugsnag/bugsnag-laravel": "^2.0",
         "creativeorange/gravatar": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
-        "jeroennoten/laravel-adminlte": "^3.9",
+        "jeroennoten/laravel-adminlte": "v3.9.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
