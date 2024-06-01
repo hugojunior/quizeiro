@@ -22,4 +22,5 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('/quizzes/{username}/{slug}', [QuizController::class, 'show'])->name('api.quizzes.show');
     Route::post('/quizzes/{username}/{slug}', [QuizController::class, 'store'])->name('api.quizzes.store');
     Route::get('/quizzes/{username}/{slug}/score', [QuizController::class, 'score'])->name('api.quizzes.score');
+    Route::post('/quizzes/{username}/{slug}/hit', [QuizController::class, 'hit'])->name('api.quizzes.hit');
 });
