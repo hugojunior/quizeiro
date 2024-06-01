@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Quiz_access;
 use App\Models\Quiz_user;
 use App\Models\User;
 use Carbon\Carbon;
@@ -152,6 +153,23 @@ class QuizController extends Controller
             ->get();
 
         return response()->json($users);
+    }
+
+    public function hit(Request $request, $username, $slug)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $quiz = Quiz::where('user_id', $user->id)
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        $quizAccess = new Quiz_Access();
+        $quizAccess->quiz_id = $quiz->id;
+        $quizAccess->referrer = $_SERVER['HTTP_REFERER'] ?? null;
+        $quizAccess->user_agent = $_SERVER['HTTP_USER_AGENT'] ?? null;
+        $quizAccess->ip = $_SERVER['REMOTE_ADDR'] ?? null;
+        $quizAccess->save();
+
+        return response()->json(['success' => true]);
     }
 
 }
