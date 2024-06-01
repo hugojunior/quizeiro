@@ -105,7 +105,7 @@ class QuizController extends Controller
             return response()->json(['error' => 'Quiz já terminou!'], 404);
         }
 
-        $quiz = Quiz::where('id', $quizID)
+        $quiz = Quiz::where('id', $quiz->id)
             ->where('date_start', '<=', date('Y-m-d H:i:s'))
             ->where('date_end', '>=', date('Y-m-d H:i:s'))
             ->firstOrFail();
@@ -122,7 +122,7 @@ class QuizController extends Controller
         $appData->overlay_views = $request->overlay_views;
         $appData->questions = $request->questions;
         $appData->client = $request->client;
-        //$appData->save();
+        $appData->save();
 
         return response()->json(['success' => true]);
     }

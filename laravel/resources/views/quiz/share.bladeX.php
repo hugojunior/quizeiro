@@ -443,6 +443,7 @@
 				this.appData.time_end = Date.now();
 				this.appData.end_type = "gameover" + text;
 				this.sendAppData();
+
 				this.add.dom(400, 208).setInteractive().createFromCache("gameOver");
 				document.querySelector("#gameOverMessage").innerHTML = text || "";
 				document.querySelector(
