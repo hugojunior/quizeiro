@@ -149,7 +149,7 @@ class QuizController extends Controller
             ->whereNotNull('score')
             ->orderBy('score', 'desc')
             ->orderBy('created_at', 'asc')
-            ->limit(10)
+            ->limit(6)
             ->get();
 
         return response()->json($users);
